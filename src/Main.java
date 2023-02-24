@@ -12,8 +12,8 @@ public class Main {
         books.add("abc");
         books.add("ac");
 
-        String other = "ac";
-        books.removeIf(b -> b.equals(other));
+        //String other = "ac";
+        //books.removeIf(b -> b.equals(other));
 
         for (String str1: books) System.out.printf("el : %s\n", str1);
 
