@@ -1,8 +1,10 @@
+import AbstractCommand.AbstractCommand;
+
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Класс для хранения в словаре команд
+ * Class for keeping commands in Map(name, command)
  */
 public class CommandDictionary {
 
@@ -13,7 +15,7 @@ public class CommandDictionary {
     }
 
     /**
-     * Конструктор, в котором создается словарь команд(ключ название команды) + добавление в словарь команд, указанных в параметрах конструктора
+     * Constructor, which create Map of commands(name, command) + add commands in array from constructor parameter
      * @param commands
      */
     public CommandDictionary(AbstractCommand... commands){
@@ -24,7 +26,7 @@ public class CommandDictionary {
     }
 
     /**
-     * Проверка существует ли команда с заданным названием + выполняет метод execute() в случае, если такая команда есть
+     * Check does command with this name exist + use method execute(), if exist
      * @param commandName
      */
     public void executeCommand(String commandName){

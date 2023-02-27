@@ -16,8 +16,8 @@ public class Dragon {
     private DragonCharacter character; //Поле может быть null
     private DragonHead head;
 
-    public Dragon(){
-        //this.creationDate = new Tim
+    public Dragon() {
+        //this.creationDate;
     }
 
     @Override

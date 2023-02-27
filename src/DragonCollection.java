@@ -1,17 +1,22 @@
+import DragonCharacteristics.CustomComparator;
 import DragonCharacteristics.Dragon;
 
-import java.util.Set;
+import java.util.Comparator;
+import java.util.TreeSet;
 import java.util.TreeSet;
 
+/**
+ * TreeSet of dragons
+ */
 public class DragonCollection {
 
-    private Set<Dragon> dragons;
+    private TreeSet<Dragon> dragons;
 
     public DragonCollection(){
-        this.dragons = new TreeSet<>();
+        this.dragons = new TreeSet<>(new CustomComparator());
     }
 
-    public Set<Dragon> getDragons() {
+    public TreeSet<Dragon> getDragons() {
         return dragons;
     }
 
