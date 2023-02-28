@@ -42,7 +42,11 @@ public class FilterContainsName extends AbstractCommand {
                             tmp.add(dragon);
 
                     }
+                    else
+                        break;
                 }
+                else
+                    break;
 
             }
         }
