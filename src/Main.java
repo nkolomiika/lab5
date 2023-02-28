@@ -1,11 +1,13 @@
-import DragonCharacteristics.Dragon;
-
 import java.math.BigInteger;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        String uniqueID = UUID.randomUUID().toString();
+
+        Scanner inputData = new Scanner(System.in);
+
+
+        /*String uniqueID = UUID.randomUUID().toString();
         System.out.println(uniqueID);
 
         List<String> books = new ArrayList<String>();
@@ -21,6 +23,6 @@ public class Main {
         String generateUUIDNo = String.format("%010d",new BigInteger(UUID.randomUUID().toString().replace("-",""),16));
 
         Long.parseLong(generateUUIDNo.substring( generateUUIDNo.length() - 10), 10);
-        //System.out.println( String.format("%010d","AAAA",16));
+        *///System.out.println( String.format("%010d","AAAA",16));
     }
 }
