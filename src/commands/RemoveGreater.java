@@ -1,15 +1,14 @@
-package commandPackage;
+package commands;
 
-import collections.CustomComparator;
 import collections.DragonCollection;
 
-import dragonCharacteristics.Dragon;
+import dragon.Dragon;
 import exception.DragonCollectionIsEmptyException;
 import exception.NoElementInCollectionException;
 import superCommand.AbstractCommand;
 
 /**
- * Class implements command remove_greater {element}
+ * Class implements command remove_greater {element}.
  * Command remove elements that don`t exceed input element
  */
 public class RemoveGreater extends AbstractCommand {

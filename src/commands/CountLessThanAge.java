@@ -1,11 +1,9 @@
-package commandPackage;
+package commands;
 
 import collections.DragonCollection;
-import dragonCharacteristics.Dragon;
+import dragon.Dragon;
 import exception.DragonCollectionIsEmptyException;
 import superCommand.AbstractCommand;
-
-import java.util.Scanner;
 
 /**
  * Class implements command count_less_than_age age.

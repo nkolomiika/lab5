@@ -1,6 +1,6 @@
 package collections;
 
-import dragonCharacteristics.Dragon;
+import dragon.Dragon;
 
 import java.util.Comparator;
 

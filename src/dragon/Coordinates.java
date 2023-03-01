@@ -1,4 +1,4 @@
-package dragonCharacteristics;
+package dragon;
 
 public class Coordinates {
     private int x;

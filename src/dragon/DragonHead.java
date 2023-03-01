@@ -1,4 +1,4 @@
-package dragonCharacteristics;
+package dragon;
 
 public class DragonHead {
     private float eyesCount;

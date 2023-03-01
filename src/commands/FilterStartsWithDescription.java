@@ -1,9 +1,7 @@
-package commandPackage;
+package commands;
 
-import dragonCharacteristics.Dragon;
+import dragon.Dragon;
 import collections.DragonCollection;
-
-import java.util.*;
 
 import exception.DragonCollectionIsEmptyException;
 import superCommand.AbstractCommand;

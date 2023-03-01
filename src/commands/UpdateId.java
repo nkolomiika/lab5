@@ -1,7 +1,7 @@
-package commandPackage;
+package commands;
 
 import collections.DragonCollection;
-import dragonCharacteristics.Dragon;
+import dragon.Dragon;
 import exception.DragonCollectionIsEmptyException;
 import exception.NoElementInCollectionException;
 import superCommand.AbstractCommand;

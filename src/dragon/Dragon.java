@@ -1,6 +1,4 @@
-package dragonCharacteristics;
-
-import collections.DragonCollection;
+package dragon;
 
 import java.math.BigInteger;
 import java.time.LocalDateTime;

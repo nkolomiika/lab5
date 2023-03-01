@@ -1,4 +1,4 @@
-package commandPackage;
+package commands;
 
 import collections.DragonCollection;
 

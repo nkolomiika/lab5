@@ -1,7 +1,4 @@
-package dragonCharacteristics;
-
-import java.util.ArrayList;
-import java.util.List;
+package dragon;
 
 public enum DragonCharacter {
     EVIL("evil"),

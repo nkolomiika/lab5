@@ -1,6 +1,6 @@
 package collections;
 
-import dragonCharacteristics.Dragon;
+import dragon.Dragon;
 
 import java.time.LocalDateTime;
 import java.util.TreeSet;

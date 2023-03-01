@@ -1,8 +1,8 @@
-package commandPackage;
+package commands;
 
 import collections.CustomComparator;
 import collections.DragonCollection;
-import dragonCharacteristics.Dragon;
+import dragon.Dragon;
 import exception.DragonCollectionIsEmptyException;
 import superCommand.AbstractCommand;
 

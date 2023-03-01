@@ -1,6 +1,4 @@
-package commandPackage;
-
-import java.util.*;
+package commands;
 
 import collections.CommandDictionary;
 import superCommand.AbstractCommand;
