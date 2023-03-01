@@ -7,6 +7,7 @@ import dragon.DragonHead;
 import exception.InputDataIsEmptyException;
 import exception.InputDataMustBePositiveException;
 import exception.ThirdVariantOfAnswerException;
+import superCommand.TypeOfArguments;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -26,7 +27,6 @@ public class InputDragonData {
 
     /**
      * Method set input yield to Dragon element from this class`s methods
-     *
      * @return Dragon
      */
     public Dragon inputDragon() {
@@ -40,35 +40,6 @@ public class InputDragonData {
                 this.inputCharacter(),
                 this.inputDragonHead()
         );
-
-    }
-
-    public Long inputId() {
-
-        String strId;
-        long id;
-
-        while (true) {
-            try {
-
-                strId = inputData.nextLine().trim();
-                id = Long.parseLong(strId);
-
-                if (id <= 0) throw new InputDataMustBePositiveException();
-                break;
-
-            } catch (NumberFormatException exception) {
-                System.out.println("Input id must be number and be long type");
-            } catch (InputDataMustBePositiveException exception) {
-                System.out.println("Input id must be positive");
-            } catch (NoSuchElementException exception) {
-                System.out.println("Input element can`t null");
-            } catch (IllegalArgumentException exception) {
-                System.out.println("Invalid format of yield");
-            }
-        }
-
-        return id;
 
     }
 
@@ -200,10 +171,13 @@ public class InputDragonData {
                 System.out.print("Description = ");
                 description = inputData.nextLine().trim();
 
+                if (description.equals("")) throw new InputDataIsEmptyException();
                 break;
 
             } catch (NoSuchElementException exception) {
                 System.out.println("Input description can`t be null");
+            } catch (InputDataIsEmptyException exception) {
+                System.out.println("Input description length must be greater than zero");
             }
         }
 
@@ -218,14 +192,14 @@ public class InputDragonData {
      * @return {1, 0, -1}
      */
     private int yesOrNot(String yesNo) {
-        if (yesNo.compareToIgnoreCase("y") == 1
-                || yesNo.compareToIgnoreCase("yes") == 1
-                || yesNo.compareToIgnoreCase("да") == 1
-                || yesNo.compareToIgnoreCase("true") == 1) return 1;
-        else if (yesNo.compareToIgnoreCase("n") == 1
-                || yesNo.compareToIgnoreCase("no") == 1
-                || yesNo.compareToIgnoreCase("нет") == 1
-                || yesNo.compareToIgnoreCase("false") == 1) return 0;
+        if (yesNo.equals("y")
+                || yesNo.equals("yes")
+                || yesNo.equals("да")
+                || yesNo.equals("true")) return 1;
+        else if (yesNo.equals("n")
+                || yesNo.equals("no")
+                || yesNo.equals("нет")
+                || yesNo.equals("false")) return 0;
         return -1;
     }
 
@@ -258,6 +232,7 @@ public class InputDragonData {
     public DragonCharacter inputCharacter() {
 
         String strCharacter;
+        DragonCharacter character;
 
         while (true) {
             try {
@@ -265,7 +240,7 @@ public class InputDragonData {
                 System.out.println("Choose dragon`s characteristic from these variants : " + DragonCharacter.getStringOfTittles());
                 System.out.print("Characteristic = ");
                 strCharacter = inputData.nextLine().trim().toUpperCase().replaceAll(" ", "_");
-                //characteristic = DragonCharacter.valueOf(strCharacteristic);
+                character = DragonCharacter.valueOf(strCharacter);
 
                 break;
 
@@ -276,7 +251,7 @@ public class InputDragonData {
             }
         }
 
-        return DragonCharacter.valueOf(strCharacter);
+        return character;
 
     }
 
@@ -288,7 +263,7 @@ public class InputDragonData {
         while (true) {
             try {
 
-                System.out.println("Count of eyes = ");
+                System.out.print("Count of eyes = ");
                 strEyesCount = inputData.nextLine().trim();
 
                 eyesCount = Float.parseFloat(strEyesCount);
@@ -318,7 +293,7 @@ public class InputDragonData {
         while (true) {
             try {
 
-                System.out.println("Count of eyes = ");
+                System.out.print("Count of tooth = ");
                 strToothCount = inputData.nextLine().trim();
 
                 toothCount = Integer.parseInt(strToothCount);

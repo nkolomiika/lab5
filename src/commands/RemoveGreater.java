@@ -15,6 +15,7 @@ public class RemoveGreater extends AbstractCommand {
 
     public RemoveGreater(String commandName, DragonCollection dragonsCollection) {
         super(commandName, dragonsCollection);
+        this.typeOfArg = null;
     }
 
     @Override
@@ -24,36 +25,34 @@ public class RemoveGreater extends AbstractCommand {
 
             if (dragonsCollection.getDragons().size() == 0)
                 throw new DragonCollectionIsEmptyException();
+            
             else {
 
                 try {
 
                     Dragon inputDragon;
 
-                    while (true) {
+                    inputDragon = inputDragonData.inputDragon();
+                    boolean flag = false;
 
-                        inputDragon = inputDragonData.inputDragon();
-                        boolean flag = false;
-
-                        for (Dragon dragon : dragonsCollection.getDragons()) {
-                            if (inputDragon.compareTo(dragon) < 0) {
-                                dragonsCollection.getDragons().remove(dragon);
-                                flag = true;
-                                break;
-                            }
+                    for (Dragon dragon : dragonsCollection.getDragons()) {
+                        if (inputDragon.compareTo(dragon) < 0) {
+                            dragonsCollection.getDragons().remove(dragon);
+                            flag = true;
+                            break;
                         }
-
-                        if (!flag) throw new NoElementInCollectionException();
-
-                        break;
                     }
+
+                    if (!flag) throw new NoElementInCollectionException();
+                    
                 } catch (NoElementInCollectionException exception) {
                     System.out.println("No dragons which exceed this dragon");
                 }
 
             }
 
-        } catch (DragonCollectionIsEmptyException exception) {
+        } catch (
+                DragonCollectionIsEmptyException exception) {
             System.out.println("Dragon collection is empty");
         }
 
@@ -61,6 +60,6 @@ public class RemoveGreater extends AbstractCommand {
 
     @Override
     public String getCommandInfo() {
-        return this.getCommandName() + " : remove elements that exceed input element";
+        return " remove elements that exceed input element";
     }
 }

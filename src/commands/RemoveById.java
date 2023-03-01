@@ -6,6 +6,7 @@ import dragon.Dragon;
 import exception.DragonCollectionIsEmptyException;
 import exception.NoElementInCollectionException;
 import superCommand.AbstractCommand;
+import superCommand.TypeOfArguments;
 
 /**
  * Class implements command remove_by_id.
@@ -16,10 +17,11 @@ public class RemoveById extends AbstractCommand {
 
     public RemoveById(String commandName, DragonCollection dragonsCollection) {
         super(commandName, dragonsCollection);
+        this.typeOfArg = TypeOfArguments.LONG;
     }
 
     @Override
-    public void execute() {
+    public void execute(Long argId) {
 
         try {
 
@@ -29,15 +31,12 @@ public class RemoveById extends AbstractCommand {
 
                 try {
 
-                    Long inputId;
-
                     while (true) {
 
-                        inputId = inputDragonData.inputId();
                         boolean flag = false;
 
                         for (Dragon dragon : dragonsCollection.getDragons()) {
-                            if (dragon.getId().equals(inputId)) {
+                            if (dragon.getId().equals(argId)) {
                                 dragonsCollection.getDragons().remove(dragon);
                                 flag = true;
                                 break;
@@ -62,6 +61,6 @@ public class RemoveById extends AbstractCommand {
 
     @Override
     public String getCommandInfo() {
-        return this.getCommandName() + " : remove element by input id";
+        return " remove element by input id";
     }
 }

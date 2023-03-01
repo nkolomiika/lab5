@@ -14,6 +14,7 @@ public class AddIfMax extends AbstractCommand {
 
     public AddIfMax(String commandName, DragonCollection dragonsCollection) {
         super(commandName, dragonsCollection);
+        this.typeOfArg = null;
     }
 
     @Override
@@ -25,8 +26,12 @@ public class AddIfMax extends AbstractCommand {
 
             if (dragonsCollection.getDragons().size() == 0) throw new DragonCollectionIsEmptyException();
 
-            if (dragonsCollection.getDragons().higher(compareDragon) == null)
+            if (dragonsCollection.getDragons().last().compareTo(compareDragon) < 0) {
                 dragonsCollection.getDragons().add(compareDragon);
+                System.out.println("Dragon added to collection");
+            } else {
+                System.out.println("Dragon lower than the greatest dragon in collection ");
+            }
 
         } catch (DragonCollectionIsEmptyException exception) {
             System.out.println("Dragon collection is empty");
@@ -36,6 +41,6 @@ public class AddIfMax extends AbstractCommand {
 
     @Override
     public String getCommandInfo() {
-        return this.getCommandName() + " : add element in collection, if input object higher than the max element";
+        return " add element in collection, if input object higher than the max element";
     }
 }

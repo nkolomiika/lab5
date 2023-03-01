@@ -19,6 +19,7 @@ public class Add extends AbstractCommand {
 
     public Add(String commandName, DragonCollection dragonsCollection) {
         super(commandName, dragonsCollection);
+        this.typeOfArg = null;
     }
 
     @Override
@@ -28,10 +29,12 @@ public class Add extends AbstractCommand {
 
         dragonsCollection.getDragons().add(dragon);
 
+        System.out.println("Dragon added to collection");
+
     }
 
     @Override
     public String getCommandInfo() {
-        return this.getCommandName() + " : add new element to collection";
+        return " add new element to collection";
     }
 }

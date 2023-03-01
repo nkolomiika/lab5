@@ -37,7 +37,7 @@ public class Dragon implements Comparable<Dragon> {
     public String toString() {
         return "Dragon{" +
                 "id : " + id +
-                ", name : '" + name + '\'' +
+                ", name : '" + name + "\', " +
                 coordinates.toString() +
                 ", creationDate : " + creationDate +
                 ", age : " + age +

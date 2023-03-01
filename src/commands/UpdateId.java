@@ -5,6 +5,7 @@ import dragon.Dragon;
 import exception.DragonCollectionIsEmptyException;
 import exception.NoElementInCollectionException;
 import superCommand.AbstractCommand;
+import superCommand.TypeOfArguments;
 
 /**
  * Class implements command update id {element}.
@@ -14,10 +15,11 @@ public class UpdateId extends AbstractCommand {
 
     public UpdateId(String commandName, DragonCollection dragonsCollection) {
         super(commandName, dragonsCollection);
+        this.typeOfArg = TypeOfArguments.LONG;
     }
 
     @Override
-    public void execute() {
+    public void execute(Long argId) {
 
         try {
 
@@ -31,12 +33,12 @@ public class UpdateId extends AbstractCommand {
 
                     while (true) {
 
-                        inputId = inputDragonData.inputId();
+                        //inputId = consoleInput.inputFromStringId();
                         boolean flag = false;
 
                         for (Dragon dragon : dragonsCollection.getDragons()) {
-                            if (dragon.getId().equals(inputId)) {
-                                dragon.setId(inputId);
+                            if (dragon.getId().equals(argId)) {
+                                dragon.setId(argId);
                                 dragon.setName(inputDragonData.inputName());
                                 dragon.setCoordinates(inputDragonData.inputCoordinates());
                                 dragon.setAge(inputDragonData.inputAge());
@@ -67,7 +69,7 @@ public class UpdateId extends AbstractCommand {
 
     @Override
     public String getCommandInfo() {
-        return this.getCommandName() + " : update element in collection with input id";
+        return " update element in collection with input id";
     }
 
 }

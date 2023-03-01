@@ -14,21 +14,22 @@ public class Info extends AbstractCommand {
 
     public Info(String commandName, DragonCollection dragonsCollection) {
         super(commandName, dragonsCollection);
+        this.typeOfArg = null;
     }
 
     @Override
     public void execute() {
 
-        System.out.print("Info about collection{");
+        System.out.println("Info about collection{");
         System.out.printf("    Type of collection : %s\n", dragonsCollection.getDragons().getClass().getName());
         System.out.printf("    Size of collection : %d\n", dragonsCollection.getDragons().size());
         System.out.printf("    Date of creation collection : %s\n", dragonsCollection.getCreationDate());
-        System.out.print("}");
+        System.out.println("}");
 
     }
 
     @Override
     public String getCommandInfo() {
-        return this.getCommandName() + " : output in standard output information about collection(type, date of initialization, size of collection etc)";
+        return " output in standard output information about collection(type, date of initialization, size of collection etc)";
     }
 }

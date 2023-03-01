@@ -14,6 +14,7 @@ public class Show extends AbstractCommand {
 
     public Show(String commandName, DragonCollection dragonsCollection) {
         super(commandName, dragonsCollection);
+        this.typeOfArg = null;
     }
 
     @Override
@@ -35,6 +36,6 @@ public class Show extends AbstractCommand {
 
     @Override
     public String getCommandInfo() {
-        return this.getCommandName() + " : output in standard output all elements of collection in string representation";
+        return " output in standard output all elements of collection in string representation";
     }
 }

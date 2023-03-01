@@ -5,6 +5,7 @@ import collections.DragonCollection;
 
 import exception.DragonCollectionIsEmptyException;
 import superCommand.AbstractCommand;
+import superCommand.TypeOfArguments;
 
 /**
  * Class implements command filter_starts_with_description description.
@@ -15,21 +16,24 @@ public class FilterStartsWithDescription extends AbstractCommand {
 
     public FilterStartsWithDescription(String commandName, DragonCollection dragonsCollection) {
         super(commandName, dragonsCollection);
+        this.typeOfArg = TypeOfArguments.STRING;
     }
 
     @Override
-    public void execute() {
+    public void execute(String inputDescription) {
 
         try {
 
-            String inputDescription = inputDragonData.inputDescription().trim();
+            System.out.println(inputDescription);
             int count = 0;
 
             if (dragonsCollection.getDragons().size() == 0) throw new DragonCollectionIsEmptyException();
             for (Dragon dragon : dragonsCollection.getDragons()) {
-                if (inputDescription.equals(dragon.getDescription().substring(0, dragon.getDescription().length()))) {
-                    count++;
-                    dragon.toString();
+                if (inputDescription.length() <= dragon.getDescription().length()) {
+                    if (inputDescription.equals(dragon.getDescription().substring(0, inputDescription.length()))) {
+                        count++;
+                        System.out.println(dragon.toString());
+                    }
                 }
             }
 
@@ -44,6 +48,6 @@ public class FilterStartsWithDescription extends AbstractCommand {
 
     @Override
     public String getCommandInfo() {
-        return this.getCommandName() + " : output elements, which start with input string";
+        return " output elements, which start with input string";
     }
 }

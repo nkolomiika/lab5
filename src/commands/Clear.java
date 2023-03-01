@@ -13,6 +13,7 @@ public class Clear extends AbstractCommand {
 
     public Clear(String commandName, DragonCollection dragonsCollection) {
         super(commandName, dragonsCollection);
+        this.typeOfArg = null;
     }
 
     @Override
@@ -32,6 +33,6 @@ public class Clear extends AbstractCommand {
 
     @Override
     public String getCommandInfo() {
-        return this.getCommandName() + " : clear the dragon`s collection";
+        return " clear the dragon`s collection";
     }
 }

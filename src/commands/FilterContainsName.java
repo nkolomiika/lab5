@@ -5,6 +5,7 @@ import collections.DragonCollection;
 import dragon.Dragon;
 import exception.DragonCollectionIsEmptyException;
 import superCommand.AbstractCommand;
+import superCommand.TypeOfArguments;
 
 import java.util.*;
 
@@ -16,15 +17,14 @@ public class FilterContainsName extends AbstractCommand {
 
     public FilterContainsName(String commandName, DragonCollection dragonsCollection) {
         super(commandName, dragonsCollection);
+        this.typeOfArg = TypeOfArguments.STRING;
     }
-
     @Override
-    public void execute() {
+    public void execute(String inputName) {
 
         try {
 
-            String inputName = inputDragonData.inputName();
-            Set<Dragon> tmp = new TreeSet<>(new CustomComparator());
+            Set<Dragon> str = new TreeSet<>(new CustomComparator());
 
             if (dragonsCollection.getDragons().size() == 0) throw new DragonCollectionIsEmptyException();
 
@@ -43,7 +43,7 @@ public class FilterContainsName extends AbstractCommand {
                             }
 
                             if (count == inputName.length())
-                                tmp.add(dragon);
+                                str.add(dragon);
 
                         } else
                             break;
@@ -53,9 +53,11 @@ public class FilterContainsName extends AbstractCommand {
                 }
             }
 
-            for (Dragon dragon : tmp) {
+            for (Dragon dragon : str) {
                 System.out.println(dragon.toString());
             }
+            if (str.size() == 0)
+                System.out.println("No one dragon`s name contains this string");
 
         } catch (DragonCollectionIsEmptyException exception) {
             System.out.println("Dragon collection is empty");
@@ -65,6 +67,6 @@ public class FilterContainsName extends AbstractCommand {
 
     @Override
     public String getCommandInfo() {
-        return this.getCommandName() + " : output elements, value of field name contains input string";
+        return " output elements, value of field name contains input string";
     }
 }

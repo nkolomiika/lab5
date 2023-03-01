@@ -4,6 +4,7 @@ import collections.DragonCollection;
 import dragon.Dragon;
 import exception.DragonCollectionIsEmptyException;
 import superCommand.AbstractCommand;
+import superCommand.TypeOfArguments;
 
 /**
  * Class implements command count_less_than_age age.
@@ -14,20 +15,20 @@ public class CountLessThanAge extends AbstractCommand {
 
     public CountLessThanAge(String commandName, DragonCollection dragonsCollection) {
         super(commandName, dragonsCollection);
+        this.typeOfArg = TypeOfArguments.LONG;
     }
 
     @Override
-    public void execute() {
+    public void execute(Long argAge) {
 
         try {
 
             int count = 0;
-            float inputAge = inputDragonData.inputAge();
 
             if (dragonsCollection.getDragons().size() == 0) throw new DragonCollectionIsEmptyException();
 
             for (Dragon dragon : dragonsCollection.getDragons()) {
-                if (dragon.getAge() <= inputAge) count++;
+                if (dragon.getAge() <= argAge) count++;
             }
 
             if (count == 0) System.out.println("All dragons older than this age");
@@ -42,7 +43,7 @@ public class CountLessThanAge extends AbstractCommand {
 
     @Override
     public String getCommandInfo() {
-        return this.getCommandName() + " : output count of elements, which age lower than input parameter";
+        return " output count of elements, which age lower than input parameter";
     }
 
 }
