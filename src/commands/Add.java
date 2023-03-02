@@ -1,10 +1,8 @@
 package commands;
 
-import Colors.ConsoleOutput;
-import Colors.OutputColors;
+import colors.ConsoleOutput;
 import collections.DragonCollection;
 import dragon.Dragon;
-import Colors.ConsoleOutput;
 
 
 import superCommand.AbstractCommand;

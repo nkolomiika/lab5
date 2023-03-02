@@ -1,6 +1,6 @@
 package untilities;
 
-import Colors.ConsoleOutput;
+import colors.ConsoleOutput;
 import dragon.Coordinates;
 import dragon.Dragon;
 import dragon.DragonCharacter;
@@ -8,7 +8,6 @@ import dragon.DragonHead;
 import exception.InputDataIsEmptyException;
 import exception.InputDataMustBePositiveException;
 import exception.ThirdVariantOfAnswerException;
-import superCommand.TypeOfArguments;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;

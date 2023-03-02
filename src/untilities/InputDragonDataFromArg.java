@@ -1,6 +1,6 @@
 package untilities;
 
-import Colors.ConsoleOutput;
+import colors.ConsoleOutput;
 import exception.InputDataIsEmptyException;
 import exception.InputDataMustBePositiveException;
 

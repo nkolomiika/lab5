@@ -1,4 +1,4 @@
-package Colors;
+package colors;
 
 /**
  * Colors of console output strings

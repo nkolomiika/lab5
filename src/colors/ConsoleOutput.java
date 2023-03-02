@@ -1,6 +1,6 @@
-package Colors;
+package colors;
 
-import static Colors.OutputColors.*;
+import static colors.OutputColors.*;
 
 public class ConsoleOutput {
 

@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
-import static Colors.OutputColors.ANSI_RESET;
-import static Colors.OutputColors.ANSI_YELLOW;
+import static colors.OutputColors.ANSI_RESET;
+import static colors.OutputColors.ANSI_YELLOW;
 import static java.lang.Long.parseLong;
 
 /**

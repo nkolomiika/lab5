@@ -1,9 +1,8 @@
 package commands;
 
-import Colors.ConsoleOutput;
+import colors.ConsoleOutput;
 import collections.DragonCollection;
 import dragon.Dragon;
-import exception.DragonCollectionIsEmptyException;
 import superCommand.AbstractCommand;
 import superCommand.TypeOfArguments;
 

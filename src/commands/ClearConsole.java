@@ -1,6 +1,6 @@
 package commands;
 
-import Colors.ConsoleOutput;
+import colors.ConsoleOutput;
 import superCommand.AbstractCommand;
 
 public class ClearConsole extends AbstractCommand {

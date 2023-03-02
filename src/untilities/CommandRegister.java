@@ -1,12 +1,10 @@
 package untilities;
 
-import Colors.ConsoleOutput;
+import colors.ConsoleOutput;
 import collections.CommandDictionary;
 import collections.DragonCollection;
 import exception.DragonCollectionIsEmptyException;
 import superCommand.AbstractCommand;
-
-import java.util.Map;
 
 /**
  * InputDragonDataFromArg parser, checking input string

@@ -1,3 +1,5 @@
+package main;
+
 import collections.CommandDictionary;
 import collections.DragonCollection;
 
@@ -5,8 +7,8 @@ import untilities.*;
 
 import java.util.*;
 
-import static Colors.OutputColors.ANSI_CYAN;
-import static Colors.OutputColors.ANSI_RESET;
+import static colors.OutputColors.ANSI_CYAN;
+import static colors.OutputColors.ANSI_RESET;
 
 public class Main {
 

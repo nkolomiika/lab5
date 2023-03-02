@@ -3,8 +3,8 @@ package commands;
 import collections.CommandDictionary;
 import superCommand.AbstractCommand;
 
-import static Colors.OutputColors.ANSI_PURPLE;
-import static Colors.OutputColors.ANSI_RESET;
+import static colors.OutputColors.ANSI_PURPLE;
+import static colors.OutputColors.ANSI_RESET;
 
 /**
  * Class implements command help.
