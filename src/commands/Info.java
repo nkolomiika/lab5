@@ -1,8 +1,11 @@
 package commands;
 
+import Colors.ConsoleOutput;
 import collections.DragonCollection;
 
 import superCommand.AbstractCommand;
+
+import java.time.format.DateTimeFormatter;
 
 /**
  * Class implements command info.
@@ -20,11 +23,11 @@ public class Info extends AbstractCommand {
     @Override
     public void execute() {
 
-        System.out.println("Info about collection{");
-        System.out.printf("    Type of collection : %s\n", dragonsCollection.getDragons().getClass().getName());
-        System.out.printf("    Size of collection : %d\n", dragonsCollection.getDragons().size());
-        System.out.printf("    Date of creation collection : %s\n", dragonsCollection.getCreationDate());
-        System.out.println("}");
+        ConsoleOutput.messageOutput("Info about collection{");
+        ConsoleOutput.messageOutput("    Type of collection : " + dragonsCollection.getDragons().getClass().getName());
+        ConsoleOutput.messageOutput("    Size of collection : " + dragonsCollection.getDragons().size());
+        ConsoleOutput.messageOutput("    Date of creation collection : " + dragonsCollection.getCreationDate().format(DateTimeFormatter.ofPattern("yy/MM/dd hh:mm:ss")));
+        ConsoleOutput.messageOutput("}");
 
     }
 

@@ -1,5 +1,6 @@
 package untilities;
 
+import Colors.ConsoleOutput;
 import exception.InputDataIsEmptyException;
 import exception.InputDataMustBePositiveException;
 
@@ -7,9 +8,15 @@ import java.util.NoSuchElementException;
 
 public class InputDragonDataFromArg {
 
+    /**
+     * Validate argument, and if true convert it to long type
+     * @param strLong
+     * @return Long
+     */
     public Long convertArgToLongType(String strLong) {
 
         long resLong = 0;
+        boolean warning = false;
 
         try {
 
@@ -18,23 +25,30 @@ public class InputDragonDataFromArg {
             if (resLong <= 0) throw new InputDataMustBePositiveException();
 
         } catch (NumberFormatException exception) {
-            System.out.println("Invalid arguments");
-            return resLong;
+            ConsoleOutput.errOutput("Invalid arguments");
+            warning = true;
         } catch (InputDataMustBePositiveException exception) {
-            System.out.println("Input arg must be positive");
-            return resLong;
+            ConsoleOutput.errOutput("Input arg must be positive");
+            warning = true;
         } catch (NoSuchElementException exception) {
-            System.out.println("Input arg can`t null");
-            return resLong;
+            ConsoleOutput.errOutput("Input arg can`t null");
+            warning = true;
         } catch (IllegalArgumentException exception) {
-            System.out.println("Invalid format of arg");
-            return resLong;
+            ConsoleOutput.errOutput("Invalid format of arg");
+            warning = true;
         }
+
+        if (warning) return null;
 
         return resLong;
 
-}
+    }
 
+    /**
+     * Check input argument from console
+     * @param str
+     * @return String
+     */
     public String checkValidStringFromArg(String str) {
 
         try {
@@ -43,11 +57,11 @@ public class InputDragonDataFromArg {
             if (str.equals("")) throw new InputDataIsEmptyException();
 
         } catch (NoSuchElementException exception) {
-            System.out.println("Input arg can`t be null");
-            return "";
+            ConsoleOutput.errOutput("Input arg can`t be null");
+            return null;
         } catch (InputDataIsEmptyException exception) {
-            System.out.println("Input arg is empty");
-            return "";
+            ConsoleOutput.errOutput("Invalid arguments");
+            return null;
         }
 
         return str;

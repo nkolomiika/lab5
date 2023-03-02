@@ -1,5 +1,6 @@
 package commands;
 
+import Colors.ConsoleOutput;
 import collections.DragonCollection;
 import dragon.Dragon;
 import exception.DragonCollectionIsEmptyException;
@@ -21,19 +22,19 @@ public class AddIfMin extends AbstractCommand {
 
         try {
 
-            Dragon compareDragon = inputDragonData.inputDragon();
-
             if (dragonsCollection.getDragons().size() == 0) throw new DragonCollectionIsEmptyException();
+
+            Dragon compareDragon = inputDragonData.inputDragon();
 
             if (dragonsCollection.getDragons().first().compareTo(compareDragon) > 0) {
                 dragonsCollection.getDragons().add(compareDragon);
-                System.out.println("Dragon added to collection");
+                ConsoleOutput.messageOutput("Dragon added to collection");
             } else {
                 System.out.println("Dragon higher than the lowest dragon in collection ");
             }
 
         } catch (DragonCollectionIsEmptyException exception) {
-            System.out.println("Dragon collection is empty");
+            ConsoleOutput.errOutput("Dragon collection is empty");
         }
 
     }

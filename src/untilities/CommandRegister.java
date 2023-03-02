@@ -1,6 +1,9 @@
 package untilities;
 
+import Colors.ConsoleOutput;
 import collections.CommandDictionary;
+import collections.DragonCollection;
+import exception.DragonCollectionIsEmptyException;
 import superCommand.AbstractCommand;
 
 import java.util.Map;
@@ -11,11 +14,18 @@ import java.util.Map;
 public class CommandRegister {
 
     private CommandDictionary commandDictionary;
+    private DragonCollection dragonCollection;
 
-    public CommandRegister(CommandDictionary commandDictionary) {
+    public CommandRegister(CommandDictionary commandDictionary, DragonCollection dragonCollection) {
         this.commandDictionary = commandDictionary;
+        this.dragonCollection = dragonCollection;
     }
 
+    /**
+     * Method get an input string and divide it on two elements(command+argument)
+     * @param inputString
+     * @return String[2]
+     */
     public String[] getCommandFromInputConsoleCommand(String inputString) {
 
         String[] res = new String[2];
@@ -29,34 +39,68 @@ public class CommandRegister {
         return null;
     }
 
+    /**
+     * Method return true if command exist in dictionary of commands,
+     * then check type of command (if command don`t exist method return false and print error)
+     * @param command
+     * @return boolean
+     */
     public boolean checkValidCommandFromConsole(String[] command) {
 
         AbstractCommand tmp;
 
         if (commandDictionary.getCommands().get(command[0]) != null) {
 
+            //boolean isEmpty = checkDragonsCollection();
             tmp = commandDictionary.getCommands().get(command[0]);
 
             if (command[0].equals("filter_starts_with_description")
-                    || command[0].equals("filter_contains_name"))
-                return true;
+                    || command[0].equals("filter_contains_name")) {
 
-            else if (tmp.getTypeOfArg() != null
-                    && command[1].split("\\s+").length == 1)
-                return true;
+                if (checkDragonsCollection())
+                    return true;
 
-            else if (tmp.getTypeOfArg() == null
+            } else if (tmp.getTypeOfArg() != null
+                    && command[1].split("\\s+").length == 1) {
+
+                if (checkDragonsCollection())
+                    return true;
+
+            } else if (tmp.getTypeOfArg() == null
                     && command[1].equals("")) {
                 return true;
 
             } else {
-                System.out.println("Invalid argument format");
+
+                ConsoleOutput.errOutput("Invalid argument format");
+
                 return false;
             }
 
+            return false;
+
         } else {
-            System.out.println("Invalid command name");
+            ConsoleOutput.errOutput("Invalid command name");
             return false;
         }
     }
+
+    /**
+     * Check dragons collection is empty or not
+     * @return boolean
+     */
+    public boolean checkDragonsCollection() {
+
+        try {
+            if (dragonCollection.getDragons().size() == 0) {
+                throw new DragonCollectionIsEmptyException();
+            }
+        } catch (DragonCollectionIsEmptyException exception) {
+            ConsoleOutput.errOutput("Dragon collection is empty");
+            return false;
+        }
+
+        return true;
+    }
+
 }

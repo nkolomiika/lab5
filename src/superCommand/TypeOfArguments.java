@@ -1,5 +1,8 @@
 package superCommand;
 
+/**
+ * Class of valid type of class`s arguments
+ */
 public enum TypeOfArguments {
     INTEGER("Integer"),
     LONG("Long"),

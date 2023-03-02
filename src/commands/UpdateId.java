@@ -1,5 +1,6 @@
 package commands;
 
+import Colors.ConsoleOutput;
 import collections.DragonCollection;
 import dragon.Dragon;
 import exception.DragonCollectionIsEmptyException;
@@ -21,48 +22,37 @@ public class UpdateId extends AbstractCommand {
     @Override
     public void execute(Long argId) {
 
+
         try {
 
-            if (dragonsCollection.getDragons().size() == 0)
-                throw new DragonCollectionIsEmptyException();
-            else {
+            Long inputId;
 
-                try {
+            while (true) {
 
-                    Long inputId;
+                //inputId = consoleInput.inputFromStringId();
+                boolean flag = false;
 
-                    while (true) {
-
-                        //inputId = consoleInput.inputFromStringId();
-                        boolean flag = false;
-
-                        for (Dragon dragon : dragonsCollection.getDragons()) {
-                            if (dragon.getId().equals(argId)) {
-                                dragon.setId(argId);
-                                dragon.setName(inputDragonData.inputName());
-                                dragon.setCoordinates(inputDragonData.inputCoordinates());
-                                dragon.setAge(inputDragonData.inputAge());
-                                dragon.setDescription(inputDragonData.inputDescription());
-                                dragon.setSpeaking(inputDragonData.canSpeak());
-                                dragon.setCharacter(inputDragonData.inputCharacter());
-                                dragon.setHead(inputDragonData.inputDragonHead());
-                                flag = true;
-                                break;
-                            }
-                        }
-
-                        if (!flag) throw new NoElementInCollectionException();
-
+                for (Dragon dragon : dragonsCollection.getDragons()) {
+                    if (dragon.getId().equals(argId)) {
+                        dragon.setId(argId);
+                        dragon.setName(inputDragonData.inputName());
+                        dragon.setCoordinates(inputDragonData.inputCoordinates());
+                        dragon.setAge(inputDragonData.inputAge());
+                        dragon.setDescription(inputDragonData.inputDescription());
+                        dragon.setSpeaking(inputDragonData.canSpeak());
+                        dragon.setCharacter(inputDragonData.inputCharacter());
+                        dragon.setHead(inputDragonData.inputDragonHead());
+                        flag = true;
                         break;
                     }
-                } catch (NoElementInCollectionException exception) {
-                    System.out.println("No dragon with that id in collection");
                 }
 
-            }
+                if (!flag) throw new NoElementInCollectionException();
 
-        } catch (DragonCollectionIsEmptyException exception) {
-            System.out.println("Dragon collection is empty");
+                break;
+            }
+        } catch (NoElementInCollectionException exception) {
+            ConsoleOutput.errOutput("No dragon with that id in collection");
         }
 
     }

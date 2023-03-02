@@ -1,5 +1,6 @@
 package untilities;
 
+import Colors.ConsoleOutput;
 import dragon.Coordinates;
 import dragon.Dragon;
 import dragon.DragonCharacter;
@@ -301,13 +302,13 @@ public class InputDragonData {
                 break;
 
             } catch (NumberFormatException exception) {
-                System.out.println("Invalid input format, please enter integer number");
+                ConsoleOutput.errOutput("Invalid input format, please enter integer number");
             } catch (NoSuchElementException exception) {
-                System.out.println("Count of tooth can`t be null");
+                ConsoleOutput.errOutput("Count of tooth can`t be null");
             } catch (IllegalArgumentException exception) {
-                System.out.println("Incorrect input count of tooth");
+                ConsoleOutput.errOutput("Incorrect input count of tooth");
             } catch (InputDataMustBePositiveException exception) {
-                System.out.println("Input count of tooth must be positive");
+                ConsoleOutput.errOutput("Input count of tooth must be positive");
             }
         }
 

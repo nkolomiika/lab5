@@ -19,7 +19,7 @@ public class Main {
         InputDragonDataFromArg inputDragonDataFromArg = new InputDragonDataFromArg();
         InitObjects initObjects = new InitObjects(inputDragonDataFromArg);
         CommandDictionary commands = initObjects.initCommands(dragons);
-        CommandRegister commandRegister = new CommandRegister(commands);
+        CommandRegister commandRegister = new CommandRegister(commands, dragons);
         ConsoleWorker consoleWorker = new ConsoleWorker(commands, commandRegister);
 
         while (true){
@@ -36,33 +36,9 @@ public class Main {
 /*
 Работа на завтра:
 
-ADD JAVADOCS
-
 Поискать баги в конце дня
 + мбмб начать работу с opencsv (погуглить про либы с csv форматом вообще)
 
-Почистить main, занеся все под класс InitObjects
+Почистить main, занеся все под класс InitObjects ?
 
-Если аргумент пустой не надо проверять дальше
-{
-Enter command: filter_starts_with_description
-Input arg is empty
-There are no one dragon`s description which starts with this string
-}
-
-Нужно чтобы сначала проверялось есть ли в коллекции элементы а потом аргумент
-{
-remove_by_id
-Invalid arguments
-No dragon with that id in collection
-
-remove_by_id -123
-Input arg must be positive
-No dragon with that id in collection
-}
-
-Дизайнерская часть
-{
-add method err in some class which output RED + "error : " + string
-}
  */

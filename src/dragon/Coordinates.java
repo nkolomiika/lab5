@@ -13,7 +13,7 @@ public class Coordinates {
     public String toString() {
         return "Coordinates{" +
                 "x=" + x +
-                ", y=" + y +
+                "; y=" + y +
                 '}';
     }
 

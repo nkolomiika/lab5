@@ -19,49 +19,43 @@ public class FilterContainsName extends AbstractCommand {
         super(commandName, dragonsCollection);
         this.typeOfArg = TypeOfArguments.STRING;
     }
+
     @Override
     public void execute(String inputName) {
 
-        try {
 
-            Set<Dragon> str = new TreeSet<>(new CustomComparator());
+        Set<Dragon> str = new TreeSet<>(new CustomComparator());
 
-            if (dragonsCollection.getDragons().size() == 0) throw new DragonCollectionIsEmptyException();
+        for (Dragon dragon : this.dragonsCollection.getDragons()) {
+            int lengthOfDragonName = dragon.getName().length();
+            for (int i = 0; i < lengthOfDragonName; i++) {
 
-            for (Dragon dragon : this.dragonsCollection.getDragons()) {
-                int lengthOfDragonName = dragon.getName().length();
-                for (int i = 0; i < lengthOfDragonName; i++) {
+                if (inputName.length() <= lengthOfDragonName) {
+                    if (i + inputName.length() <= lengthOfDragonName) {
 
-                    if (inputName.length() <= lengthOfDragonName) {
-                        if (i + inputName.length() <= lengthOfDragonName) {
+                        int count = 0;
 
-                            int count = 0;
+                        for (int j = 0; j < inputName.length(); j++) {
+                            if (Character.toLowerCase(dragon.getName().charAt(i + j)) == Character.toLowerCase(inputName.charAt(j)))
+                                count++;
+                        }
 
-                            for (int j = 0; j < inputName.length(); j++) {
-                                if (Character.toLowerCase(dragon.getName().charAt(i + j)) == Character.toLowerCase(inputName.charAt(j)))
-                                    count++;
-                            }
+                        if (count == inputName.length())
+                            str.add(dragon);
 
-                            if (count == inputName.length())
-                                str.add(dragon);
-
-                        } else
-                            break;
                     } else
                         break;
+                } else
+                    break;
 
-                }
             }
-
-            for (Dragon dragon : str) {
-                System.out.println(dragon.toString());
-            }
-            if (str.size() == 0)
-                System.out.println("No one dragon`s name contains this string");
-
-        } catch (DragonCollectionIsEmptyException exception) {
-            System.out.println("Dragon collection is empty");
         }
+
+        for (Dragon dragon : str) {
+            System.out.println(dragon.toString());
+        }
+        if (str.size() == 0)
+            System.out.println("No one dragon`s name contains this string");
 
     }
 

@@ -1,7 +1,10 @@
 package commands;
 
+import Colors.ConsoleOutput;
+import Colors.OutputColors;
 import collections.DragonCollection;
 import dragon.Dragon;
+import Colors.ConsoleOutput;
 
 
 import superCommand.AbstractCommand;
@@ -29,7 +32,7 @@ public class Add extends AbstractCommand {
 
         dragonsCollection.getDragons().add(dragon);
 
-        System.out.println("Dragon added to collection");
+        ConsoleOutput.messageOutput("Dragon added to collection");
 
     }
 

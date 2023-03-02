@@ -1,5 +1,6 @@
 package commands;
 
+import Colors.ConsoleOutput;
 import collections.DragonCollection;
 
 import dragon.Dragon;
@@ -34,26 +35,29 @@ public class RemoveGreater extends AbstractCommand {
 
                     inputDragon = inputDragonData.inputDragon();
                     boolean flag = false;
+                    int count = 0;
 
                     for (Dragon dragon : dragonsCollection.getDragons()) {
                         if (inputDragon.compareTo(dragon) < 0) {
                             dragonsCollection.getDragons().remove(dragon);
                             flag = true;
-                            break;
+                            count ++;
                         }
                     }
 
                     if (!flag) throw new NoElementInCollectionException();
-                    
+
+                    ConsoleOutput.messageOutput("Delete count of dragons : " + count);
+
                 } catch (NoElementInCollectionException exception) {
-                    System.out.println("No dragons which exceed this dragon");
+                    ConsoleOutput.errOutput("No dragons which exceed this dragon");
                 }
 
             }
 
         } catch (
                 DragonCollectionIsEmptyException exception) {
-            System.out.println("Dragon collection is empty");
+            ConsoleOutput.errOutput("Dragon collection is empty");
         }
 
     }

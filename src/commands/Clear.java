@@ -1,5 +1,6 @@
 package commands;
 
+import Colors.ConsoleOutput;
 import collections.DragonCollection;
 
 import exception.DragonCollectionIsEmptyException;
@@ -24,6 +25,7 @@ public class Clear extends AbstractCommand {
             if (dragonsCollection.getDragons().size() == 0) throw new DragonCollectionIsEmptyException();
 
             dragonsCollection.getDragons().clear();
+            ConsoleOutput.messageOutput("Dragon collection cleared");
 
         } catch (DragonCollectionIsEmptyException exception) {
             System.out.println("Dragon collection is already clear");

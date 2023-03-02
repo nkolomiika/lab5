@@ -26,4 +26,8 @@ interface Command {
         System.out.println("Command is executing");
     }
 
+    default <T> void execute(T arg){
+        System.out.println("ll");
+    }
+
 }

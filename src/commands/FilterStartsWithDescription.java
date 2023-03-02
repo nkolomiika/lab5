@@ -22,27 +22,19 @@ public class FilterStartsWithDescription extends AbstractCommand {
     @Override
     public void execute(String inputDescription) {
 
-        try {
+        int count = 0;
 
-            System.out.println(inputDescription);
-            int count = 0;
-
-            if (dragonsCollection.getDragons().size() == 0) throw new DragonCollectionIsEmptyException();
-            for (Dragon dragon : dragonsCollection.getDragons()) {
-                if (inputDescription.length() <= dragon.getDescription().length()) {
-                    if (inputDescription.equals(dragon.getDescription().substring(0, inputDescription.length()))) {
-                        count++;
-                        System.out.println(dragon.toString());
-                    }
+        for (Dragon dragon : dragonsCollection.getDragons()) {
+            if (inputDescription.length() <= dragon.getDescription().length()) {
+                if (inputDescription.equals(dragon.getDescription().substring(0, inputDescription.length()))) {
+                    count++;
+                    System.out.println(dragon.toString());
                 }
             }
-
-            if (count == 0)
-                System.out.println("There are no one dragon`s description which starts with this string");
-
-        } catch (DragonCollectionIsEmptyException exception) {
-            System.out.println("Dragon collection is empty");
         }
+
+        if (count == 0)
+            System.out.println("There are no one dragon`s description which starts with this string");
 
     }
 

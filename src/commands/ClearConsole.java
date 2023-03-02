@@ -1,5 +1,6 @@
 package commands;
 
+import Colors.ConsoleOutput;
 import superCommand.AbstractCommand;
 
 public class ClearConsole extends AbstractCommand {
@@ -22,7 +23,7 @@ public class ClearConsole extends AbstractCommand {
                 Runtime.getRuntime().exec("clear");
 
         } catch (final Exception exception) {
-            System.out.println("I can`t clear the console");
+            ConsoleOutput.errOutput("I can`t clear the console");
         }
     }
 

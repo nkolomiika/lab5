@@ -1,5 +1,6 @@
 package commands;
 
+import Colors.ConsoleOutput;
 import dragon.Dragon;
 import collections.DragonCollection;
 
@@ -29,7 +30,7 @@ public class Show extends AbstractCommand {
             }
 
         } catch (DragonCollectionIsEmptyException exception) {
-            System.out.println("Dragon collection is empty");
+            ConsoleOutput.errOutput("Dragon collection is empty");
         }
 
     }

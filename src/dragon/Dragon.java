@@ -2,8 +2,11 @@ package dragon;
 
 import java.math.BigInteger;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
+import static Colors.OutputColors.ANSI_RESET;
+import static Colors.OutputColors.ANSI_YELLOW;
 import static java.lang.Long.parseLong;
 
 /**
@@ -35,16 +38,16 @@ public class Dragon implements Comparable<Dragon> {
 
     @Override
     public String toString() {
-        return "Dragon{" +
+        return  ANSI_YELLOW + "Dragon_" + id + ANSI_RESET + " {" +
                 "id : " + id +
                 ", name : '" + name + "\', " +
                 coordinates.toString() +
-                ", creationDate : " + creationDate +
+                ", creationDate : " + creationDate.format(DateTimeFormatter.ofPattern("hh:mm:ss")) +
                 ", age : " + age +
                 ", description : '" + description + '\'' +
                 ", speaking : " + speaking +
                 ", character : " + character.getTittle() +
-                head.toString() +
+                ", " + head.toString() +
                 '}';
     }
 

@@ -1,5 +1,6 @@
 package commands;
 
+import Colors.ConsoleOutput;
 import collections.DragonCollection;
 import dragon.Dragon;
 import exception.DragonCollectionIsEmptyException;
@@ -21,23 +22,17 @@ public class CountLessThanAge extends AbstractCommand {
     @Override
     public void execute(Long argAge) {
 
-        try {
 
-            int count = 0;
+        int count = 0;
 
-            if (dragonsCollection.getDragons().size() == 0) throw new DragonCollectionIsEmptyException();
-
-            for (Dragon dragon : dragonsCollection.getDragons()) {
-                if (dragon.getAge() <= argAge) count++;
-            }
-
-            if (count == 0) System.out.println("All dragons older than this age");
-            else if (count == 1) System.out.println("There is 1 dragon older than this age");
-            else System.out.printf("There are %d dragons older than this age", count);
-
-        } catch (DragonCollectionIsEmptyException exception) {
-            System.out.println("Dragon collection is empty");
+        for (Dragon dragon : dragonsCollection.getDragons()) {
+            if (dragon.getAge() <= argAge) count++;
         }
+
+        if (count == 0) System.out.println("All dragons older than this age");
+        else if (count == 1) ConsoleOutput.messageOutput("There is 1 dragon older than this age");
+        else ConsoleOutput.messageOutput("There are " + count + " dragons older than this age");
+
 
     }
 

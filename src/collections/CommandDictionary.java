@@ -48,10 +48,12 @@ public class CommandDictionary {
      */
     public void executeCommand(String commandName, String args) {
         //if (commands.get(commandName) != null)
-        if (commands.get(commandName).getTypeOfArg().getTittle().equals("String")) {
+        if (commands.get(commandName).getTypeOfArg().getTittle().equals("String")
+            && inputDragonDataFromArg.checkValidStringFromArg(args) != null) {
             commands.get(commandName).execute(inputDragonDataFromArg.checkValidStringFromArg(args));
         }
-        if (commands.get(commandName).getTypeOfArg().getTittle().equals("Long")) {
+        if (commands.get(commandName).getTypeOfArg().getTittle().equals("Long")
+            && inputDragonDataFromArg.convertArgToLongType(args) != null) {
             commands.get(commandName).execute(inputDragonDataFromArg.convertArgToLongType(args));
         }
         if (commands.get(commandName).getTypeOfArg() == null) {

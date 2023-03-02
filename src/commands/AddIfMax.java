@@ -1,5 +1,6 @@
 package commands;
 
+import Colors.ConsoleOutput;
 import collections.DragonCollection;
 
 import dragon.Dragon;
@@ -22,19 +23,20 @@ public class AddIfMax extends AbstractCommand {
 
         try {
 
+            if (dragonsCollection.getDragons().size() == 0) throw new DragonCollectionIsEmptyException();
+
             Dragon compareDragon = inputDragonData.inputDragon();
 
-            if (dragonsCollection.getDragons().size() == 0) throw new DragonCollectionIsEmptyException();
 
             if (dragonsCollection.getDragons().last().compareTo(compareDragon) < 0) {
                 dragonsCollection.getDragons().add(compareDragon);
-                System.out.println("Dragon added to collection");
+                ConsoleOutput.messageOutput("Dragon added to collection");
             } else {
                 System.out.println("Dragon lower than the greatest dragon in collection ");
             }
 
         } catch (DragonCollectionIsEmptyException exception) {
-            System.out.println("Dragon collection is empty");
+            ConsoleOutput.errOutput("Dragon collection is empty");
         }
 
     }

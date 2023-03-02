@@ -1,5 +1,6 @@
 package commands;
 
+import Colors.ConsoleOutput;
 import collections.DragonCollection;
 import dragon.Dragon;
 
@@ -23,38 +24,26 @@ public class RemoveById extends AbstractCommand {
     @Override
     public void execute(Long argId) {
 
+
         try {
 
-            if (dragonsCollection.getDragons().size() == 0)
-                throw new DragonCollectionIsEmptyException();
-            else {
 
-                try {
+            boolean flag = false;
 
-                    while (true) {
-
-                        boolean flag = false;
-
-                        for (Dragon dragon : dragonsCollection.getDragons()) {
-                            if (dragon.getId().equals(argId)) {
-                                dragonsCollection.getDragons().remove(dragon);
-                                flag = true;
-                                break;
-                            }
-                        }
-
-                        if (!flag) throw new NoElementInCollectionException();
-
-                        break;
-                    }
-                } catch (NoElementInCollectionException exception) {
-                    System.out.println("No dragon with that id in collection");
+            for (Dragon dragon : dragonsCollection.getDragons()) {
+                if (dragon.getId().equals(argId)) {
+                    dragonsCollection.getDragons().remove(dragon);
+                    flag = true;
                 }
-
             }
 
-        } catch (DragonCollectionIsEmptyException exception) {
-            System.out.println("Dragon collection is empty");
+            if (!flag) throw new NoElementInCollectionException();
+
+            ConsoleOutput.messageOutput("Dragon with id = " + argId + " deleted");
+
+        } catch (
+                NoElementInCollectionException exception) {
+            ConsoleOutput.errOutput("No dragon with that id in collection");
         }
 
     }

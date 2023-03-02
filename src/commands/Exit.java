@@ -1,5 +1,6 @@
 package commands;
 
+import Colors.ConsoleOutput;
 import superCommand.AbstractCommand;
 
 /**
@@ -15,7 +16,7 @@ public class Exit extends AbstractCommand {
 
     @Override
     public void execute() {
-        System.out.println("Console application closed");
+        ConsoleOutput.messageOutput("Console application closed");
         System.exit(0);
     }
 
