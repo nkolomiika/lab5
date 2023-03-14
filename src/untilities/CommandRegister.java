@@ -7,7 +7,7 @@ import exception.DragonCollectionIsEmptyException;
 import superCommand.AbstractCommand;
 
 /**
- * InputDragonDataFromArg parser, checking input string
+ * Convector parser, checking input string
  */
 public class CommandRegister {
 

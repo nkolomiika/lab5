@@ -5,17 +5,15 @@ import collections.DragonCollection;
 import commands.*;
 import superCommand.AbstractCommand;
 
-import java.util.Scanner;
-
 /**\
  * Class of initialization of objects, which use in main method
  */
 public class InitObjects {
 
-    private InputDragonDataFromArg inputDragonDataFromArg;
+    private Convector convector;
 
-    public InitObjects(InputDragonDataFromArg inputDragonDataFromArg){
-        this.inputDragonDataFromArg = inputDragonDataFromArg;
+    public InitObjects(Convector convector){
+        this.convector = convector;
     }
 
     /**
@@ -49,7 +47,7 @@ public class InitObjects {
                 new ClearConsole("clear_console")
         };
 
-        CommandDictionary commands = new CommandDictionary(inputDragonDataFromArg, commandsArray);
+        CommandDictionary commands = new CommandDictionary(convector, commandsArray);
         commands.getCommands().put("help", new Help("help", commands));
 
         return commands;

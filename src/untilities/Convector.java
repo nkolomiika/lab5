@@ -6,7 +6,7 @@ import exception.InputDataMustBePositiveException;
 
 import java.util.NoSuchElementException;
 
-public class InputDragonDataFromArg {
+public class Convector {
 
     /**
      * Validate argument, and if true convert it to long type

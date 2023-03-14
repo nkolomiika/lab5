@@ -17,11 +17,11 @@ import static java.lang.Long.parseLong;
 /**
  * Class includes methods, which return input yield to class Dragon element
  */
-public class InputDragonData {
+public class InputData {
 
     private Scanner inputData;
 
-    public InputDragonData(Scanner inputData) {
+    public InputData(Scanner inputData) {
         this.inputData = inputData;
     }
 
@@ -43,6 +43,31 @@ public class InputDragonData {
 
     }
 
+    public String inputEnvVar(){
+        
+        String env;
+
+        while (true) {
+            try {
+
+                System.out.println("Enter name of environment variable: ");
+                env = inputData.nextLine().trim();
+
+                if (env.equals("")) throw new InputDataIsEmptyException();
+                break;
+
+            } catch (NoSuchElementException exception) {
+                ConsoleOutput.errOutput("Input env variable can`t be null");
+            } catch (InputDataIsEmptyException exception) {
+                ConsoleOutput.errOutput("Input length of env variable must be greater than zero");
+            }
+
+        }
+
+        return env;
+
+    }
+
     public String inputName() {
 
         String name;
@@ -57,9 +82,9 @@ public class InputDragonData {
                 break;
 
             } catch (NoSuchElementException exception) {
-                System.out.println("Input name can`t be null");
+                ConsoleOutput.errOutput("Input name can`t be null");
             } catch (InputDataIsEmptyException exception) {
-                System.out.println("Input name`s length must be greater than zero");
+                ConsoleOutput.errOutput("Input name`s length must be greater than zero");
             }
 
         }
@@ -83,11 +108,11 @@ public class InputDragonData {
                 break;
 
             } catch (NumberFormatException exception) {
-                System.out.println("Input coordinate must be number and be integer type");
+                ConsoleOutput.errOutput("Input coordinate must be number and be integer type");
             } catch (IllegalArgumentException exception) {
-                System.out.println("Incorrect input coordinate");
+                ConsoleOutput.errOutput("Incorrect input coordinate");
             } catch (NoSuchElementException exception) {
-                System.out.println("Input name can`t be null");
+                ConsoleOutput.errOutput("Input name can`t be null");
             }
         }
 
@@ -110,11 +135,11 @@ public class InputDragonData {
                 break;
 
             } catch (NumberFormatException exception) {
-                System.out.println("Input coordinate must be number and be integer type");
+                ConsoleOutput.errOutput("Input coordinate must be number and be integer type");
             } catch (IllegalArgumentException exception) {
-                System.out.println("Incorrect input coordinate");
+                ConsoleOutput.errOutput("Incorrect input coordinate");
             } catch (NoSuchElementException exception) {
-                System.out.println("Input coordinate can`t be null");
+                ConsoleOutput.errOutput("Input coordinate can`t be null");
             }
         }
 
@@ -147,13 +172,13 @@ public class InputDragonData {
                 break;
 
             } catch (NoSuchElementException exception) {
-                System.out.println("Input age can`t be null");
+                ConsoleOutput.errOutput("Input age can`t be null");
             } catch (InputDataMustBePositiveException exception) {
-                System.out.println("Input age must be positive");
+                ConsoleOutput.errOutput("Input age must be positive");
             } catch (NumberFormatException exception) {
-                System.out.println("Input age must be number and be long type");
+                ConsoleOutput.errOutput("Input age must be number and be long type");
             } catch (IllegalArgumentException exception) {
-                System.out.println("Incorrect input age");
+                ConsoleOutput.errOutput("Incorrect input age");
             }
         }
 
@@ -175,9 +200,9 @@ public class InputDragonData {
                 break;
 
             } catch (NoSuchElementException exception) {
-                System.out.println("Input description can`t be null");
+                ConsoleOutput.errOutput("Input description can`t be null");
             } catch (InputDataIsEmptyException exception) {
-                System.out.println("Input description length must be greater than zero");
+                ConsoleOutput.errOutput("Input description length must be greater than zero");
             }
         }
 
@@ -219,9 +244,9 @@ public class InputDragonData {
                 break;
 
             } catch (ThirdVariantOfAnswerException exception) {
-                System.out.println("Invalid variant");
+                ConsoleOutput.errOutput("Invalid variant");
             } catch (NoSuchElementException exception) {
-                System.out.println("You must choose the variant, this yield can`t be null");
+                ConsoleOutput.errOutput("You must choose the variant, this yield can`t be null");
             }
         }
 
@@ -237,7 +262,7 @@ public class InputDragonData {
         while (true) {
             try {
 
-                System.out.println("Choose dragon`s characteristic from these variants : " + DragonCharacter.getStringOfTittles());
+                ConsoleOutput.errOutput("Choose dragon`s characteristic from these variants : " + DragonCharacter.getStringOfTittles());
                 System.out.print("Characteristic = ");
                 strCharacter = inputData.nextLine().trim().toUpperCase().replaceAll(" ", "_");
                 character = DragonCharacter.valueOf(strCharacter);
@@ -245,9 +270,9 @@ public class InputDragonData {
                 break;
 
             } catch (IllegalArgumentException exception) {
-                System.out.println("Invalid variant of character");
+                ConsoleOutput.errOutput("Invalid variant of character");
             } catch (NoSuchElementException exception) {
-                System.out.println("Character can`t be null");
+                ConsoleOutput.errOutput("Character can`t be null");
             }
         }
 
@@ -271,13 +296,13 @@ public class InputDragonData {
                 break;
 
             } catch (NumberFormatException exception) {
-                System.out.println("Invalid input format, please enter float number");
+                ConsoleOutput.errOutput("Invalid input format, please enter float number");
             } catch (NoSuchElementException exception) {
-                System.out.println("Count of eyes can`t be null");
+                ConsoleOutput.errOutput("Count of eyes can`t be null");
             } catch (IllegalArgumentException exception) {
-                System.out.println("Incorrect input count of eyes");
+                ConsoleOutput.errOutput("Incorrect input count of eyes");
             } catch (InputDataMustBePositiveException exception) {
-                System.out.println("Input count of eyes must be positive");
+                ConsoleOutput.errOutput("Input count of eyes must be positive");
             }
         }
 
