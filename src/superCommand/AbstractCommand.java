@@ -2,8 +2,8 @@ package superCommand;
 
 import collections.CommandDictionary;
 import collections.DragonCollection;
-import untilities.InputDragonDataFromArg;
-import untilities.InputDragonData;
+import untilities.Convector;
+import untilities.InputData;
 
 import java.util.Scanner;
 
@@ -14,14 +14,14 @@ public abstract class AbstractCommand implements Command {
 
     protected TypeOfArguments typeOfArg;
     private String commandName;
-    protected InputDragonData inputDragonData;
+    protected InputData inputDragonData;
     protected DragonCollection dragonsCollection;
     protected CommandDictionary commandDictionary;
 
     public AbstractCommand(String commandName, DragonCollection dragons) {
         this.commandName = commandName;
         this.dragonsCollection = dragons;
-        this.inputDragonData = new InputDragonData(new Scanner(System.in));
+        this.inputDragonData = new InputData(new Scanner(System.in));
     }
 
     public AbstractCommand(String commandName, CommandDictionary commandDictionary) {

@@ -17,9 +17,9 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
         DragonCollection dragons = InitObjects.initDragons();
-        InputDragonData inputDragonData = new InputDragonData(input);
-        InputDragonDataFromArg inputDragonDataFromArg = new InputDragonDataFromArg();
-        InitObjects initObjects = new InitObjects(inputDragonDataFromArg);
+        InputData inputData = new InputData(input);
+        Convector convector = new Convector();
+        InitObjects initObjects = new InitObjects(convector);
         CommandDictionary commands = initObjects.initCommands(dragons);
         CommandRegister commandRegister = new CommandRegister(commands, dragons);
         ConsoleWorker consoleWorker = new ConsoleWorker(commands, commandRegister);
@@ -38,8 +38,8 @@ public class Main {
 /*
 Работа на завтра:
 
-Поискать баги в конце дня
-+ мбмб начать работу с opencsv (погуглить про либы с csv форматом вообще)
+начать работу с opencsv +
+добавить парсер csv -> java class
 
 Почистить main, занеся все под класс InitObjects ?
 

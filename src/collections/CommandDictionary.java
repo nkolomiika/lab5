@@ -1,7 +1,7 @@
 package collections;
 
 import superCommand.AbstractCommand;
-import untilities.InputDragonDataFromArg;
+import untilities.Convector;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,7 @@ import java.util.Map;
 public class CommandDictionary {
 
     private Map<String, AbstractCommand> commands;
-    InputDragonDataFromArg inputDragonDataFromArg;
+    Convector inputDragonDataFromArg;
 
     public Map<String, AbstractCommand> getCommands() {
         return commands;
@@ -23,7 +23,7 @@ public class CommandDictionary {
      *
      * @param commands
      */
-    public CommandDictionary(InputDragonDataFromArg inputDragonDataFromArg, AbstractCommand... commands) {
+    public CommandDictionary(Convector inputDragonDataFromArg, AbstractCommand... commands) {
         this.commands = new HashMap<>();
         for (AbstractCommand command : commands) {
             this.commands.put(command.getCommandName(), command);
