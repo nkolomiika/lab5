@@ -18,6 +18,6 @@ public class CustomComparator implements Comparator<Dragon> {
         if (nameCompare != 0)
             return nameCompare;
         else
-            return Long.compare(dragon1.getAge(), dragon2.getAge());
+            return Long.compare(dragon1.getId(), dragon2.getId());
     }
 }

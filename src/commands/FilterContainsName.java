@@ -6,6 +6,7 @@ import dragon.Dragon;
 import exception.DragonCollectionIsEmptyException;
 import superCommand.AbstractCommand;
 import superCommand.TypeOfArguments;
+import untilities.InputData;
 
 import java.util.*;
 
@@ -15,8 +16,8 @@ import java.util.*;
  */
 public class FilterContainsName extends AbstractCommand {
 
-    public FilterContainsName(String commandName, DragonCollection dragonsCollection) {
-        super(commandName, dragonsCollection);
+    public FilterContainsName(String commandName, DragonCollection dragonsCollection, InputData inputData) {
+        super(commandName, dragonsCollection, inputData);
         this.typeOfArg = TypeOfArguments.STRING;
     }
 

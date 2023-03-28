@@ -5,6 +5,7 @@ import collections.DragonCollection;
 import untilities.Convector;
 import untilities.InputData;
 
+import java.io.File;
 import java.util.Scanner;
 
 /**
@@ -18,10 +19,10 @@ public abstract class AbstractCommand implements Command {
     protected DragonCollection dragonsCollection;
     protected CommandDictionary commandDictionary;
 
-    public AbstractCommand(String commandName, DragonCollection dragons) {
+    public AbstractCommand(String commandName, DragonCollection dragons, InputData inputData) {
         this.commandName = commandName;
         this.dragonsCollection = dragons;
-        this.inputDragonData = new InputData(new Scanner(System.in));
+        this.inputDragonData = inputData;
     }
 
     public AbstractCommand(String commandName, CommandDictionary commandDictionary) {

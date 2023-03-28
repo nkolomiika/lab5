@@ -1,5 +1,9 @@
 package superCommand;
 
+import exception.IncorrectInputInScriptException;
+
+import java.io.IOException;
+
 /**
  * Interface use method execute
  */
@@ -8,14 +12,14 @@ interface Command {
     /**
      * Method for executing command
      */
-    default void execute(){
+    default void execute() throws IncorrectInputInScriptException {
         System.out.println("Command is executing");
     }
 
     /**
      * Method for executing command with args
      */
-    default void execute(String args){
+    default void execute(String args) throws IOException, IncorrectInputInScriptException {
         System.out.println("Command is executing");
     }
 

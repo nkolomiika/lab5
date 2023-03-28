@@ -3,6 +3,7 @@ package collections;
 import dragon.Dragon;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 import java.util.TreeSet;
 
 /**
@@ -30,4 +31,11 @@ public class DragonCollection {
         this.creationDate = creationDate;
     }
 
+    public boolean checkDragonInCollection(long id){
+        for (Dragon dragon : dragonsCollection){
+            if (dragon.getId() == id) return true;
+        }
+
+        return false;
+    }
 }

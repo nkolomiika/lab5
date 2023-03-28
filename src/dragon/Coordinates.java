@@ -1,10 +1,10 @@
 package dragon;
 
 public class Coordinates {
-    private int x;
+    private Integer x;
     private Float y; //Поле не может быть null
 
-    public Coordinates(int x, float y) {
+    public Coordinates(Integer x, Float y) {
         this.x = x;
         this.y = y;
     }
@@ -17,7 +17,7 @@ public class Coordinates {
                 '}';
     }
 
-    public int getX() {
+    public Integer getX() {
         return x;
     }
 

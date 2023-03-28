@@ -1,8 +1,10 @@
 package collections;
 
+import exception.IncorrectInputInScriptException;
 import superCommand.AbstractCommand;
 import untilities.Convector;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +14,7 @@ import java.util.Map;
 public class CommandDictionary {
 
     private Map<String, AbstractCommand> commands;
-    Convector inputDragonDataFromArg;
+    private Convector convector;
 
     public Map<String, AbstractCommand> getCommands() {
         return commands;
@@ -23,12 +25,12 @@ public class CommandDictionary {
      *
      * @param commands
      */
-    public CommandDictionary(Convector inputDragonDataFromArg, AbstractCommand... commands) {
+    public CommandDictionary(Convector convector, AbstractCommand... commands) {
         this.commands = new HashMap<>();
         for (AbstractCommand command : commands) {
             this.commands.put(command.getCommandName(), command);
         }
-        this.inputDragonDataFromArg = inputDragonDataFromArg;
+        this.convector = convector;
     }
 
     public void addCommand(AbstractCommand command){
@@ -39,22 +41,22 @@ public class CommandDictionary {
      * Execute command
      * @param commandName
      */
-    public void executeCommand(String commandName) {
+    public void executeCommand(String commandName) throws IncorrectInputInScriptException {
         commands.get(commandName).execute();
     }
     /**
      * Execute command with arguments
      * @param commandName, args
      */
-    public void executeCommand(String commandName, String args) {
+    public void executeCommand(String commandName, String args) throws IncorrectInputInScriptException, IOException {
         //if (commands.get(commandName) != null)
         if (commands.get(commandName).getTypeOfArg().getTittle().equals("String")
-            && inputDragonDataFromArg.checkValidStringFromArg(args) != null) {
-            commands.get(commandName).execute(inputDragonDataFromArg.checkValidStringFromArg(args));
+            && convector.checkValidStringFromArg(args) != null) {
+            commands.get(commandName).execute(convector.checkValidStringFromArg(args));
         }
         if (commands.get(commandName).getTypeOfArg().getTittle().equals("Long")
-            && inputDragonDataFromArg.convertArgToLongType(args) != null) {
-            commands.get(commandName).execute(inputDragonDataFromArg.convertArgToLongType(args));
+            && convector.convertArgToLongType(args) != null) {
+            commands.get(commandName).execute(convector.convertArgToLongType(args));
         }
         if (commands.get(commandName).getTypeOfArg() == null) {
             commands.get(commandName).execute();

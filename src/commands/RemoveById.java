@@ -4,9 +4,11 @@ import colors.ConsoleOutput;
 import collections.DragonCollection;
 import dragon.Dragon;
 
+import dragon.DragonCharacter;
 import exception.NoElementInCollectionException;
 import superCommand.AbstractCommand;
 import superCommand.TypeOfArguments;
+import untilities.InputData;
 
 /**
  * Class implements command remove_by_id.
@@ -15,8 +17,8 @@ import superCommand.TypeOfArguments;
 //add try+catch
 public class RemoveById extends AbstractCommand {
 
-    public RemoveById(String commandName, DragonCollection dragonsCollection) {
-        super(commandName, dragonsCollection);
+    public RemoveById(String commandName, DragonCollection dragonsCollection, InputData inputData) {
+        super(commandName, dragonsCollection, inputData);
         this.typeOfArg = TypeOfArguments.LONG;
     }
 
@@ -28,15 +30,16 @@ public class RemoveById extends AbstractCommand {
 
 
             boolean flag = false;
+            Dragon rmvDragon = null;
 
             for (Dragon dragon : dragonsCollection.getDragons()) {
                 if (dragon.getId().equals(argId)) {
-                    dragonsCollection.getDragons().remove(dragon);
+                    rmvDragon= dragon;
                     flag = true;
                 }
             }
-
             if (!flag) throw new NoElementInCollectionException();
+            dragonsCollection.getDragons().remove(rmvDragon);
 
             ConsoleOutput.messageOutput("Dragon with id = " + argId + " deleted");
 

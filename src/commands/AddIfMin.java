@@ -4,7 +4,9 @@ import colors.ConsoleOutput;
 import collections.DragonCollection;
 import dragon.Dragon;
 import exception.DragonCollectionIsEmptyException;
+import exception.IncorrectInputInScriptException;
 import superCommand.AbstractCommand;
+import untilities.InputData;
 
 /**
  * Class implements command add_if_min.
@@ -12,13 +14,13 @@ import superCommand.AbstractCommand;
  */
 public class AddIfMin extends AbstractCommand {
 
-    public AddIfMin(String commandName, DragonCollection dragonsCollection) {
-        super(commandName, dragonsCollection);
+    public AddIfMin(String commandName, DragonCollection dragonsCollection, InputData inputData) {
+        super(commandName, dragonsCollection, inputData);
         this.typeOfArg = null;
     }
 
     @Override
-    public void execute() {
+    public void execute() throws IncorrectInputInScriptException {
 
         try {
 

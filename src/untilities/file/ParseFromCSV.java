@@ -1,6 +1,9 @@
 package untilities.file;
 
+import com.opencsv.CSVReader;
+
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 public class ParseFromCSV {
 
@@ -14,7 +17,7 @@ public class ParseFromCSV {
 
         String path = fileInit.getFileName();
 
-        //CSVReader reader = new CSVReader(new FileReader(path));
+        CSVReader reader = new CSVReader(new FileReader(path));
 
     }
 

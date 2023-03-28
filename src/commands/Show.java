@@ -6,6 +6,7 @@ import collections.DragonCollection;
 
 import exception.DragonCollectionIsEmptyException;
 import superCommand.AbstractCommand;
+import untilities.InputData;
 
 /**
  * Class implements command show.
@@ -13,8 +14,8 @@ import superCommand.AbstractCommand;
  */
 public class Show extends AbstractCommand {
 
-    public Show(String commandName, DragonCollection dragonsCollection) {
-        super(commandName, dragonsCollection);
+    public Show(String commandName, DragonCollection dragonsCollection, InputData inputData) {
+        super(commandName, dragonsCollection, inputData);
         this.typeOfArg = null;
     }
 

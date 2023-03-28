@@ -4,7 +4,8 @@ public enum DragonCharacter {
     EVIL("evil"),
     GOOD("good"),
     CHAOTIC_EVIL("chaotic evil"),
-    FICKLE("fickle");
+    FICKLE("fickle"),
+    ERROR("error");
 
     private String tittle;
 

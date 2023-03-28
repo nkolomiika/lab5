@@ -5,6 +5,7 @@ import collections.DragonCollection;
 
 import exception.DragonCollectionIsEmptyException;
 import superCommand.AbstractCommand;
+import untilities.InputData;
 
 /**
  * Class implements command clear.
@@ -12,8 +13,8 @@ import superCommand.AbstractCommand;
  */
 public class Clear extends AbstractCommand {
 
-    public Clear(String commandName, DragonCollection dragonsCollection) {
-        super(commandName, dragonsCollection);
+    public Clear(String commandName, DragonCollection dragonsCollection, InputData inputData) {
+        super(commandName, dragonsCollection, inputData);
         this.typeOfArg = null;
     }
 

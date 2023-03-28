@@ -18,7 +18,7 @@ public class DragonHead {
                 '}';
     }
 
-    public float getEyesCount() {
+    public Float getEyesCount() {
         return eyesCount;
     }
 
@@ -26,7 +26,7 @@ public class DragonHead {
         this.eyesCount = eyesCount;
     }
 
-    public int getToothCount() {
+    public Integer getToothCount() {
         return toothCount;
     }
 

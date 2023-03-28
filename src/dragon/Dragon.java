@@ -17,15 +17,14 @@ public class Dragon implements Comparable<Dragon> {
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     private java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-    private long age; //Значение поля должно быть больше 0
+    private Long age; //Значение поля должно быть больше 0
     private String description; //Поле не может быть null
     private boolean speaking;
     private DragonCharacter character; //Поле не может быть null
     private DragonHead head;
 
-    public Dragon(String name, Coordinates coordinates, Long age, String description, boolean speaking, DragonCharacter dragonCharacter, DragonHead dragonHead) {
-        String generateUUIDNo = String.format("%010d", new BigInteger(UUID.randomUUID().toString().replace("-", ""), 16));
-        this.id = parseLong(generateUUIDNo.substring(generateUUIDNo.length() - 10), 10);
+    public Dragon(Long id, String name, Coordinates coordinates, Long age, String description, boolean speaking, DragonCharacter dragonCharacter, DragonHead dragonHead) {
+        this.id = id;
         this.name = name;
         this.coordinates = coordinates;
         this.creationDate = LocalDateTime.now();
@@ -92,7 +91,7 @@ public class Dragon implements Comparable<Dragon> {
         this.creationDate = creationDate;
     }
 
-    public long getAge() {
+    public Long getAge() {
         return age;
     }
 
@@ -130,5 +129,16 @@ public class Dragon implements Comparable<Dragon> {
 
     public void setHead(DragonHead head) {
         this.head = head;
+    }
+
+    public boolean validData(){
+        if (id == -1) return false;
+        if (name.equals("")) return false;
+        if (coordinates.getX() == null || coordinates.getY() == null) return false;
+        if (age == -1) return false;
+        if (character == DragonCharacter.ERROR) return false;
+        //if (speaking == null) return false;
+        if (head.getEyesCount() == -1 || head.getToothCount() == -1) return false;
+        return true;
     }
 }

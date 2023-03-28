@@ -3,6 +3,7 @@ package untilities.file;
 import colors.ConsoleOutput;
 import untilities.InputData;
 
+import java.io.File;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
 
@@ -36,16 +37,19 @@ public class FileInit {
 
         if (System.getenv().get(env) == null) {
             ConsoleOutput.errOutput("Env var with this name is absent");
-
+            return null;
         } else {
             path = System.getenv().get(env);
-            if (isValidPath(path)
-                    && checkFileFormat(path)) {
-                return path;
-            }
+            return checkPath(path) && checkFileFormat(path) ? path : null;
         }
+    }
 
-        return null;
+    public static boolean checkPath(String path){
+        if (isValidPath(path)){
+            File file = new File(path);
+            return file.canRead();
+        }
+        return false;
     }
 
     public static boolean isValidPath(String path) {
@@ -58,12 +62,12 @@ public class FileInit {
         return true;
     }
 
-    public static boolean checkFileFormat(String filePath) {
+    public static boolean checkFileFormat(String path) {
 
-        int dotIndex = filePath.lastIndexOf(".");
+        int dotIndex = path.lastIndexOf(".");
 
         if (dotIndex != -1
-                && filePath.substring(dotIndex + 1).equals("csv")) {
+                && path.substring(dotIndex + 1).equals("csv")) {
             return true;
         }
 

@@ -10,7 +10,7 @@ public class Convector {
 
     /**
      * Validate argument, and if true convert it to long type
-     * @param strLong
+     * @param strLong Input Long type parameter
      * @return Long
      */
     public Long convertArgToLongType(String strLong) {
@@ -32,7 +32,7 @@ public class Convector {
             warning = true;
         } catch (NoSuchElementException exception) {
             ConsoleOutput.errOutput("Input arg can`t null");
-            warning = true;
+            System.exit(0);
         } catch (IllegalArgumentException exception) {
             ConsoleOutput.errOutput("Invalid format of arg");
             warning = true;
@@ -46,7 +46,7 @@ public class Convector {
 
     /**
      * Check input argument from console
-     * @param str
+     * @param str Input String type parameter
      * @return String
      */
     public String checkValidStringFromArg(String str) {
@@ -58,7 +58,7 @@ public class Convector {
 
         } catch (NoSuchElementException exception) {
             ConsoleOutput.errOutput("Input arg can`t be null");
-            return null;
+            System.exit(0);
         } catch (InputDataIsEmptyException exception) {
             ConsoleOutput.errOutput("Invalid arguments");
             return null;

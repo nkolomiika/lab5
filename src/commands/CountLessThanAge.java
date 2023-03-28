@@ -5,6 +5,7 @@ import collections.DragonCollection;
 import dragon.Dragon;
 import superCommand.AbstractCommand;
 import superCommand.TypeOfArguments;
+import untilities.InputData;
 
 /**
  * Class implements command count_less_than_age age.
@@ -13,8 +14,8 @@ import superCommand.TypeOfArguments;
 //add try+catch
 public class CountLessThanAge extends AbstractCommand {
 
-    public CountLessThanAge(String commandName, DragonCollection dragonsCollection) {
-        super(commandName, dragonsCollection);
+    public CountLessThanAge(String commandName, DragonCollection dragonsCollection, InputData inputData) {
+        super(commandName, dragonsCollection, inputData);
         this.typeOfArg = TypeOfArguments.LONG;
     }
 

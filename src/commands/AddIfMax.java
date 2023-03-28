@@ -5,7 +5,9 @@ import collections.DragonCollection;
 
 import dragon.Dragon;
 import exception.DragonCollectionIsEmptyException;
+import exception.IncorrectInputInScriptException;
 import superCommand.AbstractCommand;
+import untilities.InputData;
 
 /**
  * Class implements command add_if_max.
@@ -13,13 +15,13 @@ import superCommand.AbstractCommand;
  */
 public class AddIfMax extends AbstractCommand {
 
-    public AddIfMax(String commandName, DragonCollection dragonsCollection) {
-        super(commandName, dragonsCollection);
+    public AddIfMax(String commandName, DragonCollection dragonsCollection, InputData inputData) {
+        super(commandName, dragonsCollection, inputData);
         this.typeOfArg = null;
     }
 
     @Override
-    public void execute() {
+    public void execute() throws IncorrectInputInScriptException {
 
         try {
 

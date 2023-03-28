@@ -5,8 +5,10 @@ import collections.DragonCollection;
 
 import dragon.Dragon;
 import exception.DragonCollectionIsEmptyException;
+import exception.IncorrectInputInScriptException;
 import exception.NoElementInCollectionException;
 import superCommand.AbstractCommand;
+import untilities.InputData;
 
 /**
  * Class implements command remove_greater {element}.
@@ -14,13 +16,13 @@ import superCommand.AbstractCommand;
  */
 public class RemoveGreater extends AbstractCommand {
 
-    public RemoveGreater(String commandName, DragonCollection dragonsCollection) {
-        super(commandName, dragonsCollection);
+    public RemoveGreater(String commandName, DragonCollection dragonsCollection, InputData inputData) {
+        super(commandName, dragonsCollection, inputData);
         this.typeOfArg = null;
     }
 
     @Override
-    public void execute() {
+    public void execute() throws IncorrectInputInScriptException {
 
         try {
 

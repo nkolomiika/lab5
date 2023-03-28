@@ -4,6 +4,7 @@ import colors.ConsoleOutput;
 import collections.DragonCollection;
 
 import superCommand.AbstractCommand;
+import untilities.InputData;
 
 import java.time.format.DateTimeFormatter;
 
@@ -15,8 +16,8 @@ import java.time.format.DateTimeFormatter;
 //some else?
 public class Info extends AbstractCommand {
 
-    public Info(String commandName, DragonCollection dragonsCollection) {
-        super(commandName, dragonsCollection);
+    public Info(String commandName, DragonCollection dragonsCollection, InputData inputData) {
+        super(commandName, dragonsCollection, inputData);
         this.typeOfArg = null;
     }
 
