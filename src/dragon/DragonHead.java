@@ -1,7 +1,12 @@
 package dragon;
 
+import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvBindByPosition;
+
 public class DragonHead {
+    @CsvBindByName(column = "eyes", required = true)
     private float eyesCount;
+    @CsvBindByName(column = "tooth", required = true)
     private int toothCount;
 
     public DragonHead(float eyesCount, int toothCount) {

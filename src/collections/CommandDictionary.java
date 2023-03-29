@@ -2,6 +2,7 @@ package collections;
 
 import exception.IncorrectInputInScriptException;
 import superCommand.AbstractCommand;
+import superCommand.TypeOfArguments;
 import untilities.Convector;
 
 import java.io.IOException;
@@ -50,11 +51,11 @@ public class CommandDictionary {
      */
     public void executeCommand(String commandName, String args) throws IncorrectInputInScriptException, IOException {
         //if (commands.get(commandName) != null)
-        if (commands.get(commandName).getTypeOfArg().getTittle().equals("String")
+        if (commands.get(commandName).getTypeOfArg().equals(TypeOfArguments.STRING)
             && convector.checkValidStringFromArg(args) != null) {
             commands.get(commandName).execute(convector.checkValidStringFromArg(args));
         }
-        if (commands.get(commandName).getTypeOfArg().getTittle().equals("Long")
+        if (commands.get(commandName).getTypeOfArg().equals(TypeOfArguments.LONG)
             && convector.convertArgToLongType(args) != null) {
             commands.get(commandName).execute(convector.convertArgToLongType(args));
         }

@@ -1,7 +1,12 @@
 package dragon;
 
+import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvBindByPosition;
+
 public class Coordinates {
+    @CsvBindByName(column = "x", required = true)
     private Integer x;
+    @CsvBindByName(column = "y", required = true)
     private Float y; //Поле не может быть null
 
     public Coordinates(Integer x, Float y) {

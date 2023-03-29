@@ -2,9 +2,15 @@ package untilities;
 
 import collections.CommandDictionary;
 import collections.DragonCollection;
+import com.sun.source.tree.ParenthesizedPatternTree;
 import commands.*;
 import superCommand.AbstractCommand;
 import untilities.file.DataRegister;
+import untilities.file.FileInit;
+import untilities.file.ParseFromCSV;
+
+import java.io.File;
+import java.lang.reflect.Parameter;
 
 /**\
  * Class of initialization of objects, which use in main method
@@ -18,6 +24,16 @@ public class InitObjects {
     private ConsoleWorker consoleWorker;
     private DataRegister dataRegister;
     private InputData inputData;
+    private ParseFromCSV parse;
+    private FileInit fileInit;
+
+    public FileInit initFileInit(){
+        return new FileInit(inputData);
+    }
+
+    public ParseFromCSV initParser(){
+        return new ParseFromCSV(fileInit);
+    }
 
     public InputData initInputData(){
         return new InputData(dragonCollection);
@@ -47,6 +63,8 @@ public class InitObjects {
         commandRegister = this.initCommandRegister();
         consoleWorker = this.initConsoleWorker();
         dataRegister = this.initDataRegister();
+        fileInit = this.initFileInit();
+        parse = this.initParser();
     }
 
     /*/**
@@ -115,5 +133,17 @@ public class InitObjects {
 
     public ConsoleWorker getConsoleWorker() {
         return consoleWorker;
+    }
+
+    public InputData getInputData() {
+        return inputData;
+    }
+
+    public ParseFromCSV getParse() {
+        return parse;
+    }
+
+    public FileInit getFileInit() {
+        return fileInit;
     }
 }

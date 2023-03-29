@@ -1,9 +1,11 @@
 package untilities.file;
 
-import com.opencsv.CSVReader;
+import com.opencsv.bean.CsvToBeanBuilder;
+import dragon.Dragon;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.List;
 
 public class ParseFromCSV {
 
@@ -13,11 +15,17 @@ public class ParseFromCSV {
         this.fileInit = fileInit;
     }
 
-    public void parseInputCSV() throws FileNotFoundException {
+    public List<Dragon> parseInputCSV() throws FileNotFoundException {
 
-        String path = fileInit.getFileName();
+        //String path = fileInit.getFileName();
+        String path = "C:\\Users\\mad_duck\\Documents\\GitHub\\lab5\\testik.csv";
 
-        CSVReader reader = new CSVReader(new FileReader(path));
+        List dragons = new CsvToBeanBuilder(new FileReader(path))
+                .withType(Dragon.class)
+                .build()
+                .parse();
+
+        return dragons;
 
     }
 

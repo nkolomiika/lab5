@@ -1,5 +1,8 @@
 package dragon;
 
+import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvBindByPosition;
+
 import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -13,14 +16,21 @@ import static java.lang.Long.parseLong;
  * Class includes all characteristics of dragon
  */
 public class Dragon implements Comparable<Dragon> {
+    @CsvBindByName(column = "id", required = true)
     private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    @CsvBindByName(column = "name", required = true)
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     private java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    @CsvBindByName(column = "age", required = true)
     private Long age; //Значение поля должно быть больше 0
+    @CsvBindByName(column = "description", required = true)
     private String description; //Поле не может быть null
+    @CsvBindByName(column = "speaking", required = true)
     private boolean speaking;
+    @CsvBindByName(column = "character", required = true)
     private DragonCharacter character; //Поле не может быть null
+    @CsvBindByName
     private DragonHead head;
 
     public Dragon(Long id, String name, Coordinates coordinates, Long age, String description, boolean speaking, DragonCharacter dragonCharacter, DragonHead dragonHead) {
@@ -37,7 +47,7 @@ public class Dragon implements Comparable<Dragon> {
 
     @Override
     public String toString() {
-        return  ANSI_YELLOW + "Dragon_" + id + ANSI_RESET + " {" +
+        return ANSI_YELLOW + "Dragon_" + id + ANSI_RESET + " {" +
                 "id : " + id +
                 ", name : '" + name + "\', " +
                 coordinates.toString() +
@@ -131,7 +141,7 @@ public class Dragon implements Comparable<Dragon> {
         this.head = head;
     }
 
-    public boolean validData(){
+    public boolean validData() {
         if (id == -1) return false;
         if (name.equals("")) return false;
         if (coordinates.getX() == null || coordinates.getY() == null) return false;

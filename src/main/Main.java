@@ -20,16 +20,22 @@ public class Main {
         Scanner input = new Scanner(System.in);
         InitObjects initObjects = new InitObjects();
         initObjects.addExecuteScript();
+        boolean flag = false;
+
+        //System.out.println(initObjects.getParse().parseInputCSV());
 
         while (true) {
-
+            if (flag) {
+                ConsoleOutput.errOutput("Line not found\nConsole application closed");
+                break;
+            }
             try{
                 System.out.print(ANSI_CYAN + "Enter command: " + ANSI_RESET);
                 String command = input.nextLine();
                 initObjects.getConsoleWorker().executeInputCommand(command);
+                if (initObjects.getCommandDictionary().getCommands().get("exit").isClosed()) break;
             } catch (NoSuchElementException e){
-                ConsoleOutput.errOutput("Line not found\nConsole application closed");
-                System.exit(0);
+                flag = true;
             }
 
         }

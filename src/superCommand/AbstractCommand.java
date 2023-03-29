@@ -13,6 +13,7 @@ import java.util.Scanner;
  */
 public abstract class AbstractCommand implements Command {
 
+    protected boolean closed;
     protected TypeOfArguments typeOfArg;
     private String commandName;
     protected InputData inputDragonData;
@@ -23,6 +24,7 @@ public abstract class AbstractCommand implements Command {
         this.commandName = commandName;
         this.dragonsCollection = dragons;
         this.inputDragonData = inputData;
+        closed = false;
     }
 
     public AbstractCommand(String commandName, CommandDictionary commandDictionary) {
@@ -54,4 +56,8 @@ public abstract class AbstractCommand implements Command {
      */
     public abstract String getCommandInfo();
 
+
+    public boolean isClosed() {
+        return closed;
+    }
 }

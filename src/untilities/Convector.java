@@ -32,7 +32,7 @@ public class Convector {
             warning = true;
         } catch (NoSuchElementException exception) {
             ConsoleOutput.errOutput("Input arg can`t null");
-            System.exit(0);
+            warning = true;
         } catch (IllegalArgumentException exception) {
             ConsoleOutput.errOutput("Invalid format of arg");
             warning = true;
@@ -58,7 +58,7 @@ public class Convector {
 
         } catch (NoSuchElementException exception) {
             ConsoleOutput.errOutput("Input arg can`t be null");
-            System.exit(0);
+            return null;
         } catch (InputDataIsEmptyException exception) {
             ConsoleOutput.errOutput("Invalid arguments");
             return null;

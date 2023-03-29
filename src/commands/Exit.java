@@ -11,17 +11,19 @@ public class Exit extends AbstractCommand {
 
     public Exit(String commandName) {
         super(commandName);
+        closed = false;
         this.typeOfArg = null;
     }
 
     @Override
     public void execute() {
         ConsoleOutput.messageOutput("Console application closed");
-        System.exit(0);
+        closed = true;
     }
 
     @Override
     public String getCommandInfo() {
         return " close console application(without save the file)";
     }
+
 }

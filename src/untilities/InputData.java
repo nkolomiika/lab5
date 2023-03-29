@@ -97,8 +97,10 @@ public class InputData {
     public String inputEnvVar() {
 
         String env;
+        boolean flag = false;
 
         while (true) {
+            if (flag) return "";
             try {
 
                 System.out.println("Enter name of environment variable: ");
@@ -109,7 +111,7 @@ public class InputData {
 
             } catch (NoSuchElementException exception) {
                 ConsoleOutput.errOutput("Input env variable can`t be null");
-                System.exit(0);
+                flag = true;
             } catch (InputDataIsEmptyException exception) {
                 ConsoleOutput.errOutput("Input length of env variable must be greater than zero");
             }
@@ -123,10 +125,11 @@ public class InputData {
     public String inputName() throws IncorrectInputInScriptException {
 
         String name;
+        boolean flag = false;
 
         while (true) {
             try {
-
+                if (flag) return "";
                 if (fileMode) {
                     name = parseData.get("name");
                     if (name.equals("")) return name;
@@ -141,7 +144,7 @@ public class InputData {
 
             } catch (NoSuchElementException exception) {
                 ConsoleOutput.errOutput("Input name can`t be null");
-                System.exit(0);
+                flag = true;
             } catch (InputDataIsEmptyException exception) {
                 if (!fileMode) ConsoleOutput.errOutput("Input name`s length must be greater than zero");
             }
@@ -181,7 +184,7 @@ public class InputData {
                 if (fileMode) flag = true;
             } catch (NoSuchElementException exception) {
                 ConsoleOutput.errOutput("Input name can`t be null");
-                System.exit(0);
+                flag = true;
             }
         }
 
@@ -218,7 +221,7 @@ public class InputData {
                 if (fileMode) flag = true;
             } catch (NoSuchElementException exception) {
                 ConsoleOutput.errOutput("Input coordinate can`t be null");
-                System.exit(0);
+                flag = true;
             }
         }
 
@@ -260,7 +263,7 @@ public class InputData {
 
             } catch (NoSuchElementException exception) {
                 ConsoleOutput.errOutput("Input age can`t be null");
-                System.exit(0);
+                flag = true;
             } catch (InputDataMustBePositiveException exception) {
                 if (!fileMode) ConsoleOutput.errOutput("Input age must be positive");
                 if (fileMode) flag = true;
@@ -299,7 +302,7 @@ public class InputData {
 
             } catch (NoSuchElementException exception) {
                 ConsoleOutput.errOutput("Input description can`t be null");
-                System.exit(0);
+                flag = true;
             } catch (InputDataIsEmptyException exception) {
                 if (!fileMode) ConsoleOutput.errOutput("Input description length must be greater than zero");
                 if (fileMode) flag = true;
@@ -354,7 +357,7 @@ public class InputData {
                 if (fileMode) flag = true;
             } catch (NoSuchElementException exception) {
                 ConsoleOutput.errOutput("You must choose the variant, this yield can`t be null");
-                System.exit(0);
+                flag = true;
             }
         }
 
@@ -390,7 +393,7 @@ public class InputData {
                 if (fileMode) flag = true;
             } catch (NoSuchElementException exception) {
                 ConsoleOutput.errOutput("Character can`t be null");
-                System.exit(0);
+                flag = true;
             }
         }
 
@@ -425,7 +428,7 @@ public class InputData {
                 if (fileMode) flag = true;
             } catch (NoSuchElementException exception) {
                 ConsoleOutput.errOutput("Count of eyes can`t be null");
-                System.exit(0);
+                flag = true;
             } catch (IllegalArgumentException exception) {
                 if (!fileMode) ConsoleOutput.errOutput("Incorrect input count of eyes");
                 if (fileMode) flag = true;
@@ -466,7 +469,7 @@ public class InputData {
                 if (fileMode) flag = true;
             } catch (NoSuchElementException exception) {
                 ConsoleOutput.errOutput("Count of tooth can`t be null");
-                System.exit(0);
+                flag = true;
             } catch (IllegalArgumentException exception) {
                 if (!fileMode) ConsoleOutput.errOutput("Incorrect input count of tooth");
                 if (fileMode) flag = true;
