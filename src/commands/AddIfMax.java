@@ -7,6 +7,7 @@ import dragon.Dragon;
 import exception.DragonCollectionIsEmptyException;
 import exception.IncorrectInputInScriptException;
 import superCommand.AbstractCommand;
+import superCommand.TypeOfArguments;
 import untilities.InputData;
 
 /**
@@ -17,7 +18,7 @@ public class AddIfMax extends AbstractCommand {
 
     public AddIfMax(String commandName, DragonCollection dragonsCollection, InputData inputData) {
         super(commandName, dragonsCollection, inputData);
-        this.typeOfArg = null;
+        this.typeOfArg = TypeOfArguments.NULL;
     }
 
     @Override

@@ -4,9 +4,9 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 
 public class Coordinates {
-    @CsvBindByName(column = "x", required = true)
+
     private Integer x;
-    @CsvBindByName(column = "y", required = true)
+
     private Float y; //Поле не может быть null
 
     public Coordinates(Integer x, Float y) {
@@ -14,12 +14,18 @@ public class Coordinates {
         this.y = y;
     }
 
+    public Coordinates(){}
+
     @Override
     public String toString() {
         return "Coordinates{" +
                 "x=" + x +
                 "; y=" + y +
                 '}';
+    }
+
+    public String toCSVCoordinates() {
+        return x + ", " + y;
     }
 
     public Integer getX() {

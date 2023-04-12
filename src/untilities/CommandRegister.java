@@ -5,6 +5,7 @@ import collections.CommandDictionary;
 import collections.DragonCollection;
 import exception.DragonCollectionIsEmptyException;
 import superCommand.AbstractCommand;
+import superCommand.TypeOfArguments;
 
 import java.util.NoSuchElementException;
 
@@ -70,13 +71,13 @@ public class CommandRegister {
 
                 return true;
 
-            } else if (tmp.getTypeOfArg() != null
+            } else if (tmp.getTypeOfArg() != TypeOfArguments.NULL
                     && command[1].split("\\s+").length == 1) {
 
                 if (checkDragonsCollection())
                     return true;
 
-            } else if (tmp.getTypeOfArg() == null
+            } else if (tmp.getTypeOfArg() == TypeOfArguments.NULL
                     && command[1].equals("")) {
                 return true;
 

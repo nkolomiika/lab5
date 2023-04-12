@@ -2,6 +2,7 @@ package commands;
 
 import colors.ConsoleOutput;
 import superCommand.AbstractCommand;
+import superCommand.TypeOfArguments;
 
 /**
  * Class implements command exit.
@@ -12,7 +13,7 @@ public class Exit extends AbstractCommand {
     public Exit(String commandName) {
         super(commandName);
         closed = false;
-        this.typeOfArg = null;
+        this.typeOfArg = TypeOfArguments.NULL;
     }
 
     @Override

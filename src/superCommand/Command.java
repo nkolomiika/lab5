@@ -12,7 +12,7 @@ interface Command {
     /**
      * Method for executing command
      */
-    default void execute() throws IncorrectInputInScriptException {
+    default void execute() throws IncorrectInputInScriptException, IOException {
         System.out.println("Command is executing");
     }
 

@@ -7,6 +7,7 @@ import dragon.Dragon;
 
 import exception.IncorrectInputInScriptException;
 import superCommand.AbstractCommand;
+import superCommand.TypeOfArguments;
 import untilities.InputData;
 
 import static java.lang.Long.parseLong;
@@ -22,7 +23,7 @@ public class Add extends AbstractCommand {
 
     public Add(String commandName, DragonCollection dragonsCollection, InputData inputData) {
         super(commandName, dragonsCollection, inputData);
-        this.typeOfArg = null;
+        this.typeOfArg = TypeOfArguments.NULL;
     }
 
     @Override

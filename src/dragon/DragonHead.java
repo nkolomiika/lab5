@@ -4,9 +4,9 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 
 public class DragonHead {
-    @CsvBindByName(column = "eyes", required = true)
+
     private float eyesCount;
-    @CsvBindByName(column = "tooth", required = true)
+
     private int toothCount;
 
     public DragonHead(float eyesCount, int toothCount) {
@@ -14,6 +14,7 @@ public class DragonHead {
         this.toothCount = toothCount;
     }
 
+    public DragonHead(){}
 
     @Override
     public String toString() {
@@ -21,6 +22,11 @@ public class DragonHead {
                 "eyesCount : " + eyesCount +
                 ", toothCount : " + toothCount +
                 '}';
+    }
+
+    public String toCSVHead() {
+        return eyesCount +
+                ", " + toothCount;
     }
 
     public Float getEyesCount() {

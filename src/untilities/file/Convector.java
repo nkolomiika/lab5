@@ -1,12 +1,16 @@
-package untilities;
+package untilities.file;
 
 import colors.ConsoleOutput;
+import com.opencsv.bean.AbstractBeanField;
+import com.opencsv.exceptions.CsvConstraintViolationException;
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import dragon.DragonCharacter;
 import exception.InputDataIsEmptyException;
 import exception.InputDataMustBePositiveException;
 
 import java.util.NoSuchElementException;
 
-public class Convector {
+public class Convector extends AbstractBeanField {
 
     /**
      * Validate argument, and if true convert it to long type
@@ -68,4 +72,15 @@ public class Convector {
 
     }
 
+    /**
+     * Convert string to enum class`s value
+     * @param s String, which will be converted to enum class`s value
+     * @return DragonCharacter value of enum class
+     */
+    @Override
+    protected DragonCharacter convert(String s) throws CsvDataTypeMismatchException, CsvConstraintViolationException {
+        s = s.toUpperCase().trim();
+        DragonCharacter.valueOf(s);
+        return DragonCharacter.valueOf(s);
+    }
 }

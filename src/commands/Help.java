@@ -2,6 +2,7 @@ package commands;
 
 import collections.CommandDictionary;
 import superCommand.AbstractCommand;
+import superCommand.TypeOfArguments;
 
 import static colors.OutputColors.ANSI_PURPLE;
 import static colors.OutputColors.ANSI_RESET;
@@ -14,7 +15,7 @@ public class Help extends AbstractCommand {
 
     public Help(String commandName, CommandDictionary commandDictionary) {
         super(commandName, commandDictionary);
-        this.typeOfArg = null;
+        this.typeOfArg = TypeOfArguments.NULL;
     }
 
     @Override

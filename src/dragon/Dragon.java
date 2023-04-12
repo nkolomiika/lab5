@@ -1,12 +1,7 @@
 package dragon;
 
-import com.opencsv.bean.CsvBindByName;
-import com.opencsv.bean.CsvBindByPosition;
-
-import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.UUID;
 
 import static colors.OutputColors.ANSI_RESET;
 import static colors.OutputColors.ANSI_YELLOW;
@@ -16,22 +11,27 @@ import static java.lang.Long.parseLong;
  * Class includes all characteristics of dragon
  */
 public class Dragon implements Comparable<Dragon> {
-    @CsvBindByName(column = "id", required = true)
+
     private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
-    @CsvBindByName(column = "name", required = true)
+
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     private java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-    @CsvBindByName(column = "age", required = true)
+
     private Long age; //Значение поля должно быть больше 0
-    @CsvBindByName(column = "description", required = true)
+
     private String description; //Поле не может быть null
-    @CsvBindByName(column = "speaking", required = true)
+
     private boolean speaking;
-    @CsvBindByName(column = "character", required = true)
+
     private DragonCharacter character; //Поле не может быть null
-    @CsvBindByName
     private DragonHead head;
+
+    public Dragon(){
+        this.coordinates = new Coordinates();
+        this.head = new DragonHead();
+        this.creationDate = LocalDateTime.now();
+    }
 
     public Dragon(Long id, String name, Coordinates coordinates, Long age, String description, boolean speaking, DragonCharacter dragonCharacter, DragonHead dragonHead) {
         this.id = id;
@@ -58,6 +58,18 @@ public class Dragon implements Comparable<Dragon> {
                 ", character : " + character.getTittle() +
                 ", " + head.toString() +
                 '}';
+    }
+
+    public String toCSV(){
+        return id +
+                ", \"" + name + "\", " +
+                coordinates.toCSVCoordinates() +
+                ", \"" + creationDate.format(DateTimeFormatter.ofPattern("hh:mm:ss")) +
+                "\", " + age +
+                ", \"" + description + '\"' +
+                ", \"" + speaking +
+                "\", \"" + character.getClass() +
+                "\", " + head.toCSVHead();
     }
 
     @Override

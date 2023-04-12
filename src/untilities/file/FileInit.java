@@ -30,6 +30,10 @@ public class FileInit {
         return null;
     }*/
 
+    /**
+     * Get file path by env value
+     * @return file name
+     */
     public String getFileName() {
 
         String env = inputData.inputEnvVar();
@@ -44,6 +48,11 @@ public class FileInit {
         }
     }
 
+    /**
+     * Check can we read this file
+     * @param path file path
+     * @return does this file can be read
+     */
     public static boolean checkPath(String path){
         if (isValidPath(path)){
             File file = new File(path);
@@ -52,6 +61,11 @@ public class FileInit {
         return false;
     }
 
+    /**
+     * Check is this path valid
+     * @param path file path
+     * @return does this path exist
+     */
     public static boolean isValidPath(String path) {
         try {
             Paths.get(path);
@@ -62,6 +76,11 @@ public class FileInit {
         return true;
     }
 
+    /**
+     * Check file format
+     * @param path file path
+     * @return does this file csv format
+     */
     public static boolean checkFileFormat(String path) {
 
         int dotIndex = path.lastIndexOf(".");

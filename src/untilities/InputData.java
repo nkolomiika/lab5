@@ -17,6 +17,8 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.UUID;
 
+import static colors.OutputColors.ANSI_CYAN;
+import static colors.OutputColors.ANSI_RESET;
 import static java.lang.Long.parseLong;
 
 /**
@@ -63,59 +65,31 @@ public class InputData {
 
     public long inputId() {
 
-        String strId;
-        long id = -1;
-        boolean flag = false;
+        long id;
 
-        if (fileMode) {
-            strId = parseData.get("id");
+        String generateUUIDNo = String.format("%010d", new BigInteger(UUID.randomUUID().toString().replace("-", ""), 16));
+        id = parseLong(generateUUIDNo.substring(generateUUIDNo.length() - 10), 10);
 
-            try {
-
-                if (strId.equals("")) throw new InputDataIsEmptyException();
-                id = Long.parseLong(strId);
-                if (id < 0) throw new InputDataIsEmptyException();
-                if (dragonCollection.checkDragonInCollection(id)) {
-                    id = -1;
-                    throw new IncorrectInputInScriptException();
-                }
-
-            } catch (InputDataIsEmptyException
-                     | IncorrectInputInScriptException
-                     | IllegalArgumentException exception) {
-                flag = true;
-            }
-        } else {
-            String generateUUIDNo = String.format("%010d", new BigInteger(UUID.randomUUID().toString().replace("-", ""), 16));
-            id = parseLong(generateUUIDNo.substring(generateUUIDNo.length() - 10), 10);
-        }
-
-        if (flag) return -1;
         return id;
     }
 
     public String inputEnvVar() {
 
-        String env;
+        String env = "";
         boolean flag = false;
 
-        while (true) {
-            if (flag) return "";
-            try {
+        try {
 
-                System.out.println("Enter name of environment variable: ");
-                env = inputData.nextLine().trim();
+            System.out.print(ANSI_CYAN + "Enter name of environment variable: " + ANSI_RESET);
+            env = inputData.nextLine().trim();
 
-                if (env.equals("")) throw new InputDataIsEmptyException();
-                break;
+            if (env.equals("")) throw new InputDataIsEmptyException();
 
-            } catch (NoSuchElementException exception) {
-                ConsoleOutput.errOutput("Input env variable can`t be null");
-                flag = true;
-            } catch (InputDataIsEmptyException exception) {
-                ConsoleOutput.errOutput("Input length of env variable must be greater than zero");
-            }
 
+        } catch (NoSuchElementException exception) {
+            ConsoleOutput.errOutput("Input env variable can`t be null");
+        } catch (InputDataIsEmptyException exception) {
+            ConsoleOutput.errOutput("Input length of env variable must be greater than zero");
         }
 
         return env;

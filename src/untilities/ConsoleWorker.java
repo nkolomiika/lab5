@@ -2,6 +2,7 @@ package untilities;
 
 import collections.CommandDictionary;
 import exception.IncorrectInputInScriptException;
+import superCommand.TypeOfArguments;
 
 import java.io.IOException;
 import java.util.NoSuchElementException;
@@ -29,10 +30,10 @@ public class ConsoleWorker {
         String[] commandArr = commandRegister.getCommandFromInputCommand(inputStr);
 
         if (commandArr != null) {
-            if (commandDictionary.getCommands().get(commandArr[0]).getTypeOfArg() != null) {
+            if (commandDictionary.getCommands().get(commandArr[0]).getTypeOfArg() != TypeOfArguments.NULL) {
                 commandDictionary.executeCommand(commandArr[0], commandArr[1]);
             }
-            if (commandDictionary.getCommands().get(commandArr[0]).getTypeOfArg() == null) {
+            if (commandDictionary.getCommands().get(commandArr[0]).getTypeOfArg() == TypeOfArguments.NULL) {
                 commandDictionary.executeCommand(commandArr[0]);
             }
         }

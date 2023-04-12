@@ -22,22 +22,23 @@ public class Main {
         initObjects.addExecuteScript();
         boolean flag = false;
 
-        //System.out.println(initObjects.getParse().parseInputCSV());
+        initObjects.initDragonCollection().setDragonsCollection(initObjects.getParse().parseInputCSV());
 
         while (true) {
-            if (flag) {
-                ConsoleOutput.errOutput("Line not found\nConsole application closed");
-                break;
-            }
+
             try{
                 System.out.print(ANSI_CYAN + "Enter command: " + ANSI_RESET);
                 String command = input.nextLine();
                 initObjects.getConsoleWorker().executeInputCommand(command);
                 if (initObjects.getCommandDictionary().getCommands().get("exit").isClosed()) break;
+                initObjects.getDataRegister().clearArrPaths();
             } catch (NoSuchElementException e){
                 flag = true;
             }
-
+            if (flag) {
+                ConsoleOutput.errOutput("Line not found\nConsole application closed");
+                break;
+            }
         }
 
     }

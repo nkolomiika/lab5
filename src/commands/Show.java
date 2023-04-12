@@ -6,6 +6,7 @@ import collections.DragonCollection;
 
 import exception.DragonCollectionIsEmptyException;
 import superCommand.AbstractCommand;
+import superCommand.TypeOfArguments;
 import untilities.InputData;
 
 /**
@@ -16,7 +17,7 @@ public class Show extends AbstractCommand {
 
     public Show(String commandName, DragonCollection dragonsCollection, InputData inputData) {
         super(commandName, dragonsCollection, inputData);
-        this.typeOfArg = null;
+        this.typeOfArg = TypeOfArguments.NULL;
     }
 
     @Override

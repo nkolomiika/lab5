@@ -31,6 +31,15 @@ public class DragonCollection {
         this.creationDate = creationDate;
     }
 
+    public void setDragonsCollection(TreeSet<Dragon> dragonsCollection) {
+        this.dragonsCollection = dragonsCollection;
+    }
+
+    /**
+     * Check is there dragon with this id
+     * @param id id of input dragon
+     * @return does this dragon exist
+     */
     public boolean checkDragonInCollection(long id){
         for (Dragon dragon : dragonsCollection){
             if (dragon.getId() == id) return true;

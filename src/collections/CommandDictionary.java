@@ -3,7 +3,7 @@ package collections;
 import exception.IncorrectInputInScriptException;
 import superCommand.AbstractCommand;
 import superCommand.TypeOfArguments;
-import untilities.Convector;
+import untilities.file.Convector;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -24,7 +24,7 @@ public class CommandDictionary {
     /**
      * Constructor, which create Map of commands(name, command) + add commands in array from constructor parameter
      *
-     * @param commands
+     * @param commands array of usable commands
      */
     public CommandDictionary(Convector convector, AbstractCommand... commands) {
         this.commands = new HashMap<>();
@@ -40,13 +40,13 @@ public class CommandDictionary {
 
     /**
      * Execute command
-     * @param commandName
+     * @param commandName name of input command
      */
-    public void executeCommand(String commandName) throws IncorrectInputInScriptException {
+    public void executeCommand(String commandName) throws IncorrectInputInScriptException, IOException {
         commands.get(commandName).execute();
     }
     /**
-     * Execute command with arguments
+     * Execute command with arguments, check their type
      * @param commandName, args
      */
     public void executeCommand(String commandName, String args) throws IncorrectInputInScriptException, IOException {

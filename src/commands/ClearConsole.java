@@ -2,12 +2,13 @@ package commands;
 
 import colors.ConsoleOutput;
 import superCommand.AbstractCommand;
+import superCommand.TypeOfArguments;
 
 public class ClearConsole extends AbstractCommand {
 
     public ClearConsole(String commandName) {
         super(commandName);
-        this.typeOfArg = null;
+        this.typeOfArg = TypeOfArguments.NULL;
     }
 
     @Override

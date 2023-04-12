@@ -9,5 +9,6 @@ public enum TypeOfArguments {
     FLOAT,
     STRING,
     DOUBLE,
-    BOOLEAN;
+    BOOLEAN,
+    NULL;
 }

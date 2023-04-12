@@ -10,7 +10,7 @@ import java.util.Comparator;
 public class CustomComparator implements Comparator<Dragon> {
 
     /**
-     * Firstly method compare object`s names, then - age (two-level sort)
+     * Firstly method compare object`s names, then - id (two-level sort)
      */
     @Override
     public int compare(Dragon dragon1, Dragon dragon2) {

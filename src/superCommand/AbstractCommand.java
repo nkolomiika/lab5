@@ -2,11 +2,7 @@ package superCommand;
 
 import collections.CommandDictionary;
 import collections.DragonCollection;
-import untilities.Convector;
 import untilities.InputData;
-
-import java.io.File;
-import java.util.Scanner;
 
 /**
  * Abstract class of commands
@@ -56,7 +52,10 @@ public abstract class AbstractCommand implements Command {
      */
     public abstract String getCommandInfo();
 
-
+    /**
+     * If this method was called, application closed
+     * @return flag to close application
+     */
     public boolean isClosed() {
         return closed;
     }

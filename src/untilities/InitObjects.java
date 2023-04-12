@@ -2,15 +2,9 @@ package untilities;
 
 import collections.CommandDictionary;
 import collections.DragonCollection;
-import com.sun.source.tree.ParenthesizedPatternTree;
 import commands.*;
 import superCommand.AbstractCommand;
-import untilities.file.DataRegister;
-import untilities.file.FileInit;
-import untilities.file.ParseFromCSV;
-
-import java.io.File;
-import java.lang.reflect.Parameter;
+import untilities.file.*;
 
 /**\
  * Class of initialization of objects, which use in main method
@@ -26,6 +20,7 @@ public class InitObjects {
     private InputData inputData;
     private ParseFromCSV parse;
     private FileInit fileInit;
+    private ToCSV parseToCSV;
 
     public FileInit initFileInit(){
         return new FileInit(inputData);
@@ -41,6 +36,10 @@ public class InitObjects {
 
     public DragonCollection initDragonCollection(){
         return new DragonCollection();
+    }
+
+    public ToCSV initToCSV(){
+        return new ToCSV(dragonCollection);
     }
 
     public ConsoleWorker initConsoleWorker(){
@@ -59,6 +58,7 @@ public class InitObjects {
         convector = new Convector();
         dragonCollection = this.initDragonCollection();
         inputData = this.initInputData();
+        parseToCSV = this.initToCSV();
         commandDictionary = this.initCommands();
         commandRegister = this.initCommandRegister();
         consoleWorker = this.initConsoleWorker();
@@ -96,8 +96,8 @@ public class InitObjects {
                 new RemoveGreater("remove_greater", dragonCollection, inputData),
                 new Show("show", dragonCollection, inputData),
                 new UpdateId("update_id", dragonCollection, inputData),
-                new ClearConsole("clear_console"),
-                //new ExecuteScript("execute_script", dataRegister)
+                //new ClearConsole("clear_console"),
+                new Save("save", parseToCSV)
         };
 
         CommandDictionary commands = new CommandDictionary(convector, commandsArray);
@@ -145,5 +145,9 @@ public class InitObjects {
 
     public FileInit getFileInit() {
         return fileInit;
+    }
+
+    public ToCSV getParseToCSV() {
+        return parseToCSV;
     }
 }

@@ -6,7 +6,7 @@ public class ConsoleOutput {
 
     /**
      * Method output red message, which means that command couldn`t execute
-     * @param err
+     * @param err output error
      */
     public static void errOutput(String err){
         System.out.println(ANSI_RED + err + ANSI_RESET);
@@ -14,7 +14,7 @@ public class ConsoleOutput {
 
     /**
      * Method output green message, which means that command has already execute
-     * @param message
+     * @param message output message
      */
     public static void messageOutput(String message){
         System.out.println(ANSI_GREEN + message + ANSI_RESET);
